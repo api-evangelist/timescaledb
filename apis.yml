@@ -1,9 +1,13 @@
 aid: timescaledb
 url: https://raw.githubusercontent.com/api-evangelist/timescaledb/refs/heads/main/apis.yml
-name: TimescaleDB
+name: TimescaleDB / Tiger Data
 x-type: company
 description: >-
-  TimescaleDB is a PostgreSQL-based time-series database with hypertables, compression, continuous aggregates, and managed Timescale Cloud.
+  TimescaleDB (now part of Tiger Data) is a PostgreSQL-native time-series database
+  featuring hypertables, columnstore (Hypercore), continuous aggregates, retention
+  policies and hyperfunctions. The managed Tiger Cloud platform exposes a public
+  REST API for managing projects, services, VPCs, peering and read replicas, while
+  the database itself is consumed via standard PostgreSQL wire protocol.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Database
@@ -11,13 +15,68 @@ tags:
   - PostgreSQL
   - Open Source
   - Cloud
+  - Hypertables
+  - Continuous Aggregates
+  - Tiger Cloud
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: timescaledb:tiger-cloud-rest
+    name: Tiger Cloud REST API
+    description: >-
+      Public REST API for the Tiger Cloud control plane — manage projects,
+      services (PostgreSQL/TimescaleDB instances), VPCs, peering, read replicas
+      and analytics events. Authenticated with public/private API key pairs.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
+    baseURL: https://console.cloud.tigerdata.com/public/api/v1
+    tags:
+      - REST
+      - Control Plane
+      - Services
+      - VPC
+      - Replicas
+    properties:
+      - type: Documentation
+        url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
+      - type: OpenAPI
+        url: openapi/timescaledb-openapi.yml
+      - type: OpenAPISource
+        url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
+      - type: SDK
+        url: https://github.com/timescale/tiger-cli
+  - aid: timescaledb:postgres-wire
+    name: TimescaleDB PostgreSQL Wire Interface
+    description: >-
+      The database itself is accessed via the PostgreSQL wire protocol (port 5432),
+      with TimescaleDB SQL functions for hypertable management, compression,
+      continuous aggregates and hyperfunctions. Not a REST API.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.tigerdata.com/docs/api/latest
+    baseURL: postgres://<host>:5432/<db>
+    tags:
+      - PostgreSQL
+      - SQL
+      - Wire Protocol
+    properties:
+      - type: Documentation
+        url: https://www.tigerdata.com/docs/api/latest
+      - type: SourceCode
+        url: https://github.com/timescale/timescaledb
 common:
   - type: Website
+    url: https://www.tigerdata.com/
+  - type: LegacyWebsite
     url: https://www.timescale.com/
+  - type: Documentation
+    url: https://www.tigerdata.com/docs
+  - type: Pricing
+    url: https://www.tigerdata.com/pricing
+  - type: GitHub
+    url: https://github.com/timescale
+  - type: Console
+    url: https://console.cloud.timescale.com/
   - type: Plans
     url: plans/timescaledb-plans-pricing.yml
   - type: RateLimits
