@@ -83,6 +83,11 @@ common:
     url: rate-limits/timescaledb-rate-limits.yml
   - type: FinOps
     url: finops/timescaledb-finops.yml
+  - type: Integrations
+    url: https://www.tigerdata.com/partners
+integrations:
+  - name: TigerData
+  - name: Hero
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
