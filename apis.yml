@@ -1,7 +1,7 @@
 aid: timescaledb
 url: https://raw.githubusercontent.com/api-evangelist/timescaledb/refs/heads/main/apis.yml
 name: TimescaleDB / Tiger Data
-x-type: company
+kind: company
 description: >-
   TimescaleDB (now part of Tiger Data) is a PostgreSQL-native time-series database
   featuring hypertables, columnstore (Hypercore), continuous aggregates, retention
