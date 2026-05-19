@@ -1,0 +1,325 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tiger Cloud API — VPCs
+  description: 'Tiger Cloud API — VPCs. 9 operations. Lead operation: List All VPCs. Self-contained Naftiko capability covering
+    one Timescaledb business surface.'
+  tags:
+  - Timescaledb
+  - VPCs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIMESCALEDB_API_KEY: TIMESCALEDB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: timescaledb-vpcs
+    baseUri: https://console.cloud.tigerdata.com/public/api/v1
+    description: Tiger Cloud API — VPCs business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-project_id-vpcs
+      path: /projects/{project_id}/vpcs
+      operations:
+      - name: getvpcs
+        method: GET
+        description: List All VPCs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createvpc
+        method: POST
+        description: Create a VPC
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-project_id-vpcs-vpc_id
+      path: /projects/{project_id}/vpcs/{vpc_id}
+      operations:
+      - name: getvpc
+        method: GET
+        description: Get a VPC
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletevpc
+        method: DELETE
+        description: Delete a VPC
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project_id-vpcs-vpc_id-peerings
+      path: /projects/{project_id}/vpcs/{vpc_id}/peerings
+      operations:
+      - name: getvpcpeerings
+        method: GET
+        description: List VPC Peerings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createvpcpeering
+        method: POST
+        description: Create a VPC Peering
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-project_id-vpcs-vpc_id-peerings-peering_id
+      path: /projects/{project_id}/vpcs/{vpc_id}/peerings/{peering_id}
+      operations:
+      - name: getvpcpeering
+        method: GET
+        description: Get a VPC Peering
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletevpcpeering
+        method: DELETE
+        description: Delete a VPC Peering
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project_id-vpcs-vpc_id-rename
+      path: /projects/{project_id}/vpcs/{vpc_id}/rename
+      operations:
+      - name: renamevpc
+        method: POST
+        description: Rename a VPC
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: timescaledb-vpcs-rest
+    port: 8080
+    description: REST adapter for Tiger Cloud API — VPCs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/projects/{project-id}/vpcs
+      name: projects-project-id-vpcs
+      description: REST surface for projects-project_id-vpcs.
+      operations:
+      - method: GET
+        name: getvpcs
+        description: List All VPCs
+        call: timescaledb-vpcs.getvpcs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createvpc
+        description: Create a VPC
+        call: timescaledb-vpcs.createvpc
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{project-id}/vpcs/{vpc-id}
+      name: projects-project-id-vpcs-vpc-id
+      description: REST surface for projects-project_id-vpcs-vpc_id.
+      operations:
+      - method: GET
+        name: getvpc
+        description: Get a VPC
+        call: timescaledb-vpcs.getvpc
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletevpc
+        description: Delete a VPC
+        call: timescaledb-vpcs.deletevpc
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{project-id}/vpcs/{vpc-id}/peerings
+      name: projects-project-id-vpcs-vpc-id-peerings
+      description: REST surface for projects-project_id-vpcs-vpc_id-peerings.
+      operations:
+      - method: GET
+        name: getvpcpeerings
+        description: List VPC Peerings
+        call: timescaledb-vpcs.getvpcpeerings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createvpcpeering
+        description: Create a VPC Peering
+        call: timescaledb-vpcs.createvpcpeering
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{project-id}/vpcs/{vpc-id}/peerings/{peering-id}
+      name: projects-project-id-vpcs-vpc-id-peerings-peering-id
+      description: REST surface for projects-project_id-vpcs-vpc_id-peerings-peering_id.
+      operations:
+      - method: GET
+        name: getvpcpeering
+        description: Get a VPC Peering
+        call: timescaledb-vpcs.getvpcpeering
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletevpcpeering
+        description: Delete a VPC Peering
+        call: timescaledb-vpcs.deletevpcpeering
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{project-id}/vpcs/{vpc-id}/rename
+      name: projects-project-id-vpcs-vpc-id-rename
+      description: REST surface for projects-project_id-vpcs-vpc_id-rename.
+      operations:
+      - method: POST
+        name: renamevpc
+        description: Rename a VPC
+        call: timescaledb-vpcs.renamevpc
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: timescaledb-vpcs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tiger Cloud API — VPCs. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-all-vpcs
+      description: List All VPCs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timescaledb-vpcs.getvpcs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-vpc
+      description: Create a VPC
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: timescaledb-vpcs.createvpc
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-vpc
+      description: Get a VPC
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timescaledb-vpcs.getvpc
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-vpc
+      description: Delete a VPC
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: timescaledb-vpcs.deletevpc
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-vpc-peerings
+      description: List VPC Peerings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timescaledb-vpcs.getvpcpeerings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-vpc-peering
+      description: Create a VPC Peering
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: timescaledb-vpcs.createvpcpeering
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-vpc-peering
+      description: Get a VPC Peering
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timescaledb-vpcs.getvpcpeering
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-vpc-peering
+      description: Delete a VPC Peering
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: timescaledb-vpcs.deletevpcpeering
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rename-vpc
+      description: Rename a VPC
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: timescaledb-vpcs.renamevpc
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

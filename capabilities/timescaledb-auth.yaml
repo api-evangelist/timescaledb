@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tiger Cloud API — Auth
+  description: 'Tiger Cloud API — Auth. 1 operations. Lead operation: Get Authentication Info. Self-contained Naftiko capability
+    covering one Timescaledb business surface.'
+  tags:
+  - Timescaledb
+  - Auth
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIMESCALEDB_API_KEY: TIMESCALEDB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: timescaledb-auth
+    baseUri: https://console.cloud.tigerdata.com/public/api/v1
+    description: Tiger Cloud API — Auth business capability. Self-contained, no shared references.
+    resources:
+    - name: auth-info
+      path: /auth/info
+      operations:
+      - name: getauthinfo
+        method: GET
+        description: Get Authentication Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: timescaledb-auth-rest
+    port: 8080
+    description: REST adapter for Tiger Cloud API — Auth. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/auth/info
+      name: auth-info
+      description: REST surface for auth-info.
+      operations:
+      - method: GET
+        name: getauthinfo
+        description: Get Authentication Info
+        call: timescaledb-auth.getauthinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: timescaledb-auth-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tiger Cloud API — Auth. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-authentication-info
+      description: Get Authentication Info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timescaledb-auth.getauthinfo
+      outputParameters:
+      - type: object
+        mapping: $.
