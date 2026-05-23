@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceCreate",
+  "title": "ServiceCreate",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for the service.",
+      "example": "my-production-db"
+    },
+    "addons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "time-series",
+          "ai"
+        ]
+      },
+      "description": "List of addons to enable for the service. 'time-series' enables TimescaleDB, 'ai' enables AI/vector extensions.",
+      "example": [
+        "time-series",
+        "ai"
+      ]
+    },
+    "region_code": {
+      "type": "string",
+      "description": "The region where the service will be created. If not provided, we'll choose the best region for you.",
+      "example": "us-east-1"
+    },
+    "replica_count": {
+      "type": "integer",
+      "description": "Number of high-availability replicas to create (all replicas are asynchronous by default).",
+      "example": 2
+    },
+    "cpu_millis": {
+      "type": "string",
+      "description": "The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service.",
+      "example": "1000"
+    },
+    "memory_gbs": {
+      "type": "string",
+      "description": "The initial memory allocation in gigabytes, or 'shared' for a shared-resource service.",
+      "example": "4"
+    },
+    "environment_tag": {
+      "$ref": "#/components/schemas/EnvironmentTag",
+      "description": "The environment tag for the service, 'DEV' by default.",
+      "default": "DEV"
+    }
+  }
+}

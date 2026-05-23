@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeployStatus",
+  "title": "DeployStatus",
+  "type": "string",
+  "enum": [
+    "QUEUED",
+    "DELETING",
+    "CONFIGURING",
+    "READY",
+    "DELETED",
+    "UNSTABLE",
+    "PAUSING",
+    "PAUSED",
+    "RESUMING",
+    "UPGRADING",
+    "OPTIMIZING"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ForkStrategy",
+  "title": "ForkStrategy",
+  "type": "string",
+  "enum": [
+    "LAST_SNAPSHOT",
+    "NOW",
+    "PITR"
+  ],
+  "description": "Strategy for creating the fork:\n- LAST_SNAPSHOT: Use existing snapshot for fast fork\n- NOW: Create new snapshot for up-to-date fork\n- PITR: Point-in-time recovery using target_time\n"
+}

@@ -1,0 +1,526 @@
+{
+  "provider": "TimescaleDB / Tiger Data",
+  "providerId": "timescaledb",
+  "kind": "json-structure",
+  "description": "Structural overview of the TimescaleDB / Tiger Data API surface; extracted from openapi/.",
+  "schemaCount": 27,
+  "operationCount": 35,
+  "schemas": [
+    {
+      "name": "AuthInfo",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "type",
+        "apiKey"
+      ]
+    },
+    {
+      "name": "VPC",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "VPCCreate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name",
+        "cidr",
+        "region_code"
+      ]
+    },
+    {
+      "name": "VPCRename",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "Peering",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "PeeringCreate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "peer_account_id",
+        "peer_region_code",
+        "peer_vpc_id"
+      ]
+    },
+    {
+      "name": "Endpoint",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ConnectionPooler",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Service",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "ServiceType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EnvironmentTag",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ForkStrategy",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "DeployStatus",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ForkSpec",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ReadReplicaSet",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "ServiceCreate",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "ForkServiceCreate",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "fork_strategy"
+      ]
+    },
+    {
+      "name": "HAReplica",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SetHAReplicaInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ReadReplicaSetCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "nodes",
+        "cpu_millis",
+        "memory_gbs"
+      ]
+    },
+    {
+      "name": "ResizeInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "cpu_millis",
+        "memory_gbs"
+      ]
+    },
+    {
+      "name": "UpdatePasswordInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "password"
+      ]
+    },
+    {
+      "name": "SetEnvironmentInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "environment"
+      ]
+    },
+    {
+      "name": "ServiceVPCInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "vpc_id"
+      ]
+    },
+    {
+      "name": "ServiceLogEntry",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "timestamp",
+        "message",
+        "severity"
+      ]
+    },
+    {
+      "name": "ServiceLogs",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "logs"
+      ]
+    },
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/auth/info",
+      "operationId": "getAuthInfo",
+      "summary": "Get Authentication Info",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/analytics/identify",
+      "operationId": "identifyUser",
+      "summary": "Identify a user",
+      "tags": [
+        "Analytics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/analytics/track",
+      "operationId": "trackEvent",
+      "summary": "Track an analytics event",
+      "tags": [
+        "Analytics"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/vpcs",
+      "operationId": "getVPCs",
+      "summary": "List All VPCs",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/vpcs",
+      "operationId": "createVPC",
+      "summary": "Create a VPC",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}",
+      "operationId": "getVPC",
+      "summary": "Get a VPC",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}",
+      "operationId": "deleteVPC",
+      "summary": "Delete a VPC",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}/rename",
+      "operationId": "renameVPC",
+      "summary": "Rename a VPC",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}/peerings",
+      "operationId": "getVPCPeerings",
+      "summary": "List VPC Peerings",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}/peerings",
+      "operationId": "createVPCPeering",
+      "summary": "Create a VPC Peering",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}/peerings/{peering_id}",
+      "operationId": "getVPCPeering",
+      "summary": "Get a VPC Peering",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/{project_id}/vpcs/{vpc_id}/peerings/{peering_id}",
+      "operationId": "deleteVPCPeering",
+      "summary": "Delete a VPC Peering",
+      "tags": [
+        "VPCs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/services",
+      "operationId": "getServices",
+      "summary": "List All Services",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services",
+      "operationId": "createService",
+      "summary": "Create a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/services/{service_id}",
+      "operationId": "getService",
+      "summary": "Get a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/{project_id}/services/{service_id}",
+      "operationId": "deleteService",
+      "summary": "Delete a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/start",
+      "operationId": "startService",
+      "summary": "Start a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/stop",
+      "operationId": "stopService",
+      "summary": "Stop a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/attachToVPC",
+      "operationId": "attachServiceToVPC",
+      "summary": "Attach Service to VPC",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/detachFromVPC",
+      "operationId": "detachServiceFromVPC",
+      "summary": "Detach Service from VPC",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/resize",
+      "operationId": "resizeService",
+      "summary": "Resize a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/enablePooler",
+      "operationId": "enablePooler",
+      "summary": "Enable Connection Pooler for a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/disablePooler",
+      "operationId": "disablePooler",
+      "summary": "Disable Connection Pooler for a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/forkService",
+      "operationId": "forkService",
+      "summary": "Fork a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/updatePassword",
+      "operationId": "updatePassword",
+      "summary": "Update Service Password",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/setEnvironment",
+      "operationId": "setEnvironment",
+      "summary": "Set Environment for a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/services/{service_id}/logs",
+      "operationId": "getServiceLogs",
+      "summary": "Get service logs",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/setHA",
+      "operationId": "setHAReplica",
+      "summary": "Change HA configuration for a Service",
+      "tags": [
+        "Services"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets",
+      "operationId": "getReplicaSets",
+      "summary": "Get Read Replica Sets",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets",
+      "operationId": "createReplicaSet",
+      "summary": "Create a Read Replica Set",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets/{replica_set_id}",
+      "operationId": "deleteReplicaSet",
+      "summary": "Delete a Read Replica Set",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets/{replica_set_id}/resize",
+      "operationId": "resizeReplicaSet",
+      "summary": "Resize a Read Replica Set",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets/{replica_set_id}/enablePooler",
+      "operationId": "enableReplicaPooler",
+      "summary": "Enable Connection Pooler for a Read Replica",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets/{replica_set_id}/disablePooler",
+      "operationId": "disableReplicaPooler",
+      "summary": "Disable Connection Pooler for a Read Replica",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{project_id}/services/{service_id}/replicaSets/{replica_set_id}/setEnvironment",
+      "operationId": "setReplicaEnvironment",
+      "summary": "Set Environment for a Read Replica",
+      "tags": [
+        "Read Replica Sets"
+      ]
+    }
+  ]
+}

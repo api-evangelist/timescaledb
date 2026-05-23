@@ -1,0 +1,13 @@
+name: TimescaleDB / Tiger Data Domain Vocabulary
+provider: TimescaleDB / Tiger Data
+providerId: timescaledb
+description: Tag-derived vocabulary for the TimescaleDB / Tiger Data API surface; sourced from openapi/ tags.
+terms:
+- term: Auth
+  description: Authentication and authorization information.
+- term: VPCs
+  description: Manage VPCs and their peering connections.
+- term: Services
+  description: Manage services, read replicas, and their associated actions.
+- term: Analytics
+  description: Track analytics events.

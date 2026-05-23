@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceVPCInput",
+  "title": "ServiceVPCInput",
+  "type": "object",
+  "required": [
+    "vpc_id"
+  ],
+  "properties": {
+    "vpc_id": {
+      "type": "string",
+      "description": "The ID of the VPC to attach the service to.",
+      "example": "1234567890"
+    }
+  }
+}

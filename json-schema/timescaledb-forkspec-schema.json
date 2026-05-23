@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ForkSpec",
+  "title": "ForkSpec",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "example": "asda1b2c3"
+    },
+    "service_id": {
+      "type": "string",
+      "example": "bbss422fg"
+    },
+    "is_standby": {
+      "type": "boolean",
+      "example": false
+    }
+  }
+}

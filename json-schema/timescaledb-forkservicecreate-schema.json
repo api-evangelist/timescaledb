@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ForkServiceCreate",
+  "title": "ForkServiceCreate",
+  "type": "object",
+  "required": [
+    "fork_strategy"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for the forked service. If not provided, will use parent service name with \"-fork\" suffix.",
+      "example": "my-production-db-fork"
+    },
+    "cpu_millis": {
+      "type": "string",
+      "description": "The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.",
+      "example": "1000"
+    },
+    "memory_gbs": {
+      "type": "string",
+      "description": "The initial memory allocation in gigabytes, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.",
+      "example": "4"
+    },
+    "fork_strategy": {
+      "$ref": "#/components/schemas/ForkStrategy",
+      "description": "Strategy for creating the fork. This field is required."
+    },
+    "target_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Target time for point-in-time recovery. Required when fork_strategy is PITR.",
+      "example": "2024-01-01T00:00:00Z"
+    },
+    "environment_tag": {
+      "$ref": "#/components/schemas/EnvironmentTag",
+      "description": "The environment tag for the forked service, 'DEV' by default.",
+      "default": "DEV"
+    }
+  },
+  "description": "Create a fork of an existing service. Service type, region code, and storage are always inherited from the parent service.\nHA replica count is always set to 0 for forked services.\n"
+}

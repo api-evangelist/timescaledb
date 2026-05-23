@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SetEnvironmentInput",
+  "title": "SetEnvironmentInput",
+  "type": "object",
+  "required": [
+    "environment"
+  ],
+  "properties": {
+    "environment": {
+      "type": "string",
+      "description": "The target environment for the service.",
+      "enum": [
+        "PROD",
+        "DEV"
+      ]
+    }
+  },
+  "example": {
+    "environment": "PROD"
+  }
+}

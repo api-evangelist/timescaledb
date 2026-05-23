@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceLogEntry",
+  "title": "ServiceLogEntry",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "message",
+    "severity"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the log entry (RFC3339 format)"
+    },
+    "message": {
+      "type": "string",
+      "description": "Log message text"
+    },
+    "severity": {
+      "type": "string",
+      "description": "PostgreSQL severity level (e.g. LOG, WARNING, ERROR, FATAL)"
+    }
+  }
+}

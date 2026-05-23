@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VPCCreate",
+  "title": "VPCCreate",
+  "type": "object",
+  "required": [
+    "name",
+    "cidr",
+    "region_code"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "my-production-vpc"
+    },
+    "cidr": {
+      "type": "string",
+      "example": "10.0.0.0/16"
+    },
+    "region_code": {
+      "type": "string",
+      "example": "us-east-1"
+    }
+  }
+}

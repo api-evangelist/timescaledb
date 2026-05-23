@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceLogs",
+  "title": "ServiceLogs",
+  "type": "object",
+  "required": [
+    "logs"
+  ],
+  "properties": {
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of log message strings. Preserved for backwards compatibility."
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ServiceLogEntry"
+      },
+      "description": "Structured log entries with timestamp and severity metadata. Only present on the cursor-based path."
+    },
+    "lastCursor": {
+      "type": "string",
+      "description": "Opaque cursor for the next page of results. Present when more log entries exist older than the last entry in this response. Absent when there are no further results."
+    }
+  }
+}

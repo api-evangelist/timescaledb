@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReadReplicaSetCreate",
+  "title": "ReadReplicaSetCreate",
+  "type": "object",
+  "required": [
+    "name",
+    "nodes",
+    "cpu_millis",
+    "memory_gbs"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for the read replica.",
+      "example": "my-reporting-replica"
+    },
+    "nodes": {
+      "type": "integer",
+      "description": "Number of nodes to create in the replica set.",
+      "example": 2
+    },
+    "cpu_millis": {
+      "type": "integer",
+      "description": "The initial CPU allocation in milli-cores.",
+      "example": 250
+    },
+    "memory_gbs": {
+      "type": "integer",
+      "description": "The initial memory allocation in gigabytes.",
+      "example": 1
+    }
+  }
+}

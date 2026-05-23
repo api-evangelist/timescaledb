@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PeeringCreate",
+  "title": "PeeringCreate",
+  "type": "object",
+  "required": [
+    "peer_account_id",
+    "peer_region_code",
+    "peer_vpc_id"
+  ],
+  "properties": {
+    "peer_account_id": {
+      "type": "string",
+      "example": "acc-12345"
+    },
+    "peer_region_code": {
+      "type": "string",
+      "example": "aws-us-east-1"
+    },
+    "peer_vpc_id": {
+      "type": "string",
+      "example": "1234567890"
+    }
+  }
+}

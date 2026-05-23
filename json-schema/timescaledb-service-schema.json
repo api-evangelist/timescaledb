@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Service",
+  "title": "Service",
+  "type": "object",
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "description": "The unique identifier for the service."
+    },
+    "project_id": {
+      "type": "string",
+      "description": "The project this service belongs to."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the service."
+    },
+    "region_code": {
+      "type": "string",
+      "description": "The cloud region where the service is hosted.",
+      "example": "us-east-1"
+    },
+    "service_type": {
+      "$ref": "#/components/schemas/ServiceType",
+      "description": "The type of the service."
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "initial_password": {
+      "type": "string",
+      "description": "The initial password for the service.",
+      "format": "password",
+      "example": "a-very-secure-initial-password"
+    },
+    "status": {
+      "$ref": "#/components/schemas/DeployStatus",
+      "description": "Current status of the service"
+    },
+    "resources": {
+      "type": "array",
+      "description": "List of resources allocated to the service",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Resource identifier"
+          },
+          "spec": {
+            "type": "object",
+            "description": "Resource specification",
+            "properties": {
+              "cpu_millis": {
+                "type": "integer",
+                "description": "CPU allocation in millicores"
+              },
+              "memory_gbs": {
+                "type": "integer",
+                "description": "Memory allocation in gigabytes"
+              },
+              "volume_type": {
+                "type": "string",
+                "description": "Type of storage volume"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for the service",
+      "properties": {
+        "environment": {
+          "type": "string",
+          "description": "Environment tag for the service"
+        }
+      }
+    },
+    "endpoint": {
+      "$ref": "#/components/schemas/Endpoint"
+    },
+    "vpcEndpoint": {
+      "type": "object",
+      "nullable": true,
+      "description": "VPC endpoint configuration if available"
+    },
+    "forked_from": {
+      "$ref": "#/components/schemas/ForkSpec"
+    },
+    "ha_replicas": {
+      "$ref": "#/components/schemas/HAReplica"
+    },
+    "connection_pooler": {
+      "$ref": "#/components/schemas/ConnectionPooler"
+    },
+    "read_replica_sets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReadReplicaSet"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReadReplicaSet",
+  "title": "ReadReplicaSet",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "alb8jicdpr"
+    },
+    "name": {
+      "type": "string",
+      "example": "reporting-replica-1"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "creating",
+        "active",
+        "resizing",
+        "deleting",
+        "error"
+      ],
+      "example": "active"
+    },
+    "nodes": {
+      "type": "integer",
+      "description": "Number of nodes in the replica set.",
+      "example": 2
+    },
+    "cpu_millis": {
+      "type": "integer",
+      "description": "CPU allocation in milli-cores.",
+      "example": 250
+    },
+    "memory_gbs": {
+      "type": "integer",
+      "description": "Memory allocation in gigabytes.",
+      "example": 1
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for the read replica set",
+      "properties": {
+        "environment": {
+          "type": "string",
+          "description": "Environment tag for the read replica set"
+        }
+      }
+    },
+    "endpoint": {
+      "$ref": "#/components/schemas/Endpoint"
+    },
+    "connection_pooler": {
+      "$ref": "#/components/schemas/ConnectionPooler"
+    }
+  }
+}

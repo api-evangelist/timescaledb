@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HAReplica",
+  "title": "HAReplica",
+  "type": "object",
+  "properties": {
+    "sync_replica_count": {
+      "type": "integer",
+      "description": "Number of synchronous high-availability replicas.",
+      "example": 1
+    },
+    "replica_count": {
+      "type": "integer",
+      "description": "Number of high-availability replicas (all replicas are asynchronous by default).",
+      "example": 1
+    }
+  }
+}

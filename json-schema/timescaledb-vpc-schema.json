@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VPC",
+  "title": "VPC",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "example": "1234567890"
+    },
+    "name": {
+      "type": "string",
+      "example": "my-production-vpc"
+    },
+    "cidr": {
+      "type": "string",
+      "example": "10.0.0.0/16"
+    },
+    "region_code": {
+      "type": "string",
+      "example": "us-east-1"
+    }
+  }
+}
