@@ -2,10 +2,11 @@ aid: timescaledb
 url: https://raw.githubusercontent.com/api-evangelist/timescaledb/refs/heads/main/apis.yml
 name: TimescaleDB / Tiger Data
 kind: company
-description: TimescaleDB (now part of Tiger Data) is a PostgreSQL-native time-series database featuring hypertables, columnstore
-  (Hypercore), continuous aggregates, retention policies and hyperfunctions. The managed Tiger Cloud platform exposes a public
-  REST API for managing projects, services, VPCs, peering and read replicas, while the database itself is consumed via standard
-  PostgreSQL wire protocol.
+description: >-
+  TimescaleDB (now part of Tiger Data) is a PostgreSQL-native time-series database featuring hypertables, columnstore
+  (Hypercore), continuous aggregates, retention policies and hyperfunctions. The managed Tiger Cloud platform exposes a
+  public REST API for managing projects, services, VPCs, peering and read replicas, while the database itself is
+  consumed via standard PostgreSQL wire protocol.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Database
@@ -22,52 +23,44 @@ specificationVersion: '0.19'
 apis:
   - aid: timescaledb:tiger-cloud-rest
     name: Tiger Cloud REST API
-    description: Public REST API for the Tiger Cloud control plane — manage projects, services (PostgreSQL/TimescaleDB instances),
+    description: >-
+      Public REST API for the Tiger Cloud control plane — manage projects, services (PostgreSQL/TimescaleDB instances),
       VPCs, peering, read replicas and analytics events. Authenticated with public/private API key pairs.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
     baseURL: https://console.cloud.tigerdata.com/public/api/v1
     tags:
-    - REST
-    - Control Plane
-    - Services
-    - VPC
-    - Replicas
+      - REST
+      - Control Plane
+      - Services
+      - VPC
+      - Replicas
     properties:
-    - type: Documentation
-      url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-    - type: OpenAPI
-      url: openapi/timescaledb-openapi.yml
-    - type: OpenAPISource
-      url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-    - type: SDK
-      url: https://github.com/timescale/tiger-cli
-    - type: NaftikoCapability
-      url: capabilities/timescaledb-analytics.yaml
-    - type: NaftikoCapability
-      url: capabilities/timescaledb-auth.yaml
-    - type: NaftikoCapability
-      url: capabilities/timescaledb-read-replica-sets.yaml
-    - type: NaftikoCapability
-      url: capabilities/timescaledb-services.yaml
-    - type: NaftikoCapability
-      url: capabilities/timescaledb-vpcs.yaml
+      - type: Documentation
+        url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
+      - type: OpenAPI
+        url: openapi/timescaledb-openapi.yml
+      - type: OpenAPISource
+        url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
+      - type: SDK
+        url: https://github.com/timescale/tiger-cli
   - aid: timescaledb:postgres-wire
     name: TimescaleDB PostgreSQL Wire Interface
-    description: The database itself is accessed via the PostgreSQL wire protocol (port 5432), with TimescaleDB SQL functions
-      for hypertable management, compression, continuous aggregates and hyperfunctions. Not a REST API.
+    description: >-
+      The database itself is accessed via the PostgreSQL wire protocol (port 5432), with TimescaleDB SQL functions for
+      hypertable management, compression, continuous aggregates and hyperfunctions. Not a REST API.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://www.tigerdata.com/docs/api/latest
     baseURL: postgres://<host>:5432/<db>
     tags:
-    - PostgreSQL
-    - SQL
-    - Wire Protocol
+      - PostgreSQL
+      - SQL
+      - Wire Protocol
     properties:
-    - type: Documentation
-      url: https://www.tigerdata.com/docs/api/latest
-    - type: SourceCode
-      url: https://github.com/timescale/timescaledb
+      - type: Documentation
+        url: https://www.tigerdata.com/docs/api/latest
+      - type: SourceCode
+        url: https://github.com/timescale/timescaledb
 common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/timescaledb
