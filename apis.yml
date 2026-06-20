@@ -7,7 +7,7 @@ description: >-
   (Hypercore), continuous aggregates, retention policies and hyperfunctions. The managed Tiger Cloud platform exposes a
   public REST API for managing projects, services, VPCs, peering and read replicas, while the database itself is
   consumed via standard PostgreSQL wire protocol.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Database
   - Time-Series
@@ -26,7 +26,7 @@ apis:
     description: >-
       Public REST API for the Tiger Cloud control plane — manage projects, services (PostgreSQL/TimescaleDB instances),
       VPCs, peering, read replicas and analytics events. Authenticated with public/private API key pairs.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
     baseURL: https://console.cloud.tigerdata.com/public/api/v1
     tags:
@@ -49,7 +49,7 @@ apis:
     description: >-
       The database itself is accessed via the PostgreSQL wire protocol (port 5432), with TimescaleDB SQL functions for
       hypertable management, compression, continuous aggregates and hyperfunctions. Not a REST API.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.tigerdata.com/docs/api/latest
     baseURL: postgres://<host>:5432/<db>
     tags:
