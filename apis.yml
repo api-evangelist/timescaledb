@@ -42,7 +42,7 @@ apis:
         url: openapi/timescaledb-openapi.yml
       - type: OpenAPISource
         url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-      - type: SDK
+      - type: SDKs
         url: https://github.com/timescale/tiger-cli
   - aid: timescaledb:postgres-wire
     name: TimescaleDB PostgreSQL Wire Interface
