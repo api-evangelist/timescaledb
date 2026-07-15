@@ -62,6 +62,8 @@ apis:
       - type: SourceCode
         url: https://github.com/timescale/timescaledb
 common:
+  - type: AgenticAccess
+    url: agentic-access/timescaledb-agentic-access.yml
   - type: TrustCenter
     url: security/timescaledb-trust-center.yml
   - type: VulnerabilityDisclosure
