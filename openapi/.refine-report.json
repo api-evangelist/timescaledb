@@ -1,0 +1,22 @@
+{
+  "provider": "timescaledb",
+  "sources": [
+    "timescaledb-analytics-api-openapi.yml",
+    "timescaledb-auth-api-openapi.yml",
+    "timescaledb-read-replica-sets-api-openapi.yml",
+    "timescaledb-services-api-openapi.yml",
+    "timescaledb-vpcs-api-openapi.yml"
+  ],
+  "outputs": [
+    "timescaledb-analytics-api-openapi.yml",
+    "timescaledb-auth-api-openapi.yml",
+    "timescaledb-read-replica-sets-api-openapi.yml",
+    "timescaledb-services-api-openapi.yml",
+    "timescaledb-vpcs-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
