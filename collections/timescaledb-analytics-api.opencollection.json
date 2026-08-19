@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tiger Cloud Analytics API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.cloud.tigerdata.com/public/api/v1/analytics/identify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Identifies a user with optional properties for analytics tracking."
+        },
+        {
+          "info": {
+            "name": "Track an analytics event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.cloud.tigerdata.com/public/api/v1/analytics/track",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tracks an analytics event with optional properties."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

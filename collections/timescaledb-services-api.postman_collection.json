@@ -1,0 +1,2857 @@
+{
+  "item": [
+    {
+      "id": "37728066-f87f-4bfd-bc40-f6acf75d9f8f",
+      "name": "Services",
+      "description": {
+        "content": "Manage services, read replicas, and their associated actions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b8fbecd-0dcf-4dac-9116-a051e07ed7b7",
+          "name": "List All Services",
+          "request": {
+            "name": "List All Services",
+            "description": {
+              "content": "Retrieves a list of all services within a specific project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6dbfef78-3166-4eb4-b478-8abe8cfa3546",
+              "name": "A list of services.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"service_id\": \"string\",\n    \"project_id\": \"string\",\n    \"name\": \"string\",\n    \"region_code\": \"us-east-1\",\n    \"service_type\": \"POSTGRES\",\n    \"created\": \"1962-06-08T02:02:04.247Z\",\n    \"initial_password\": \"a-very-secure-initial-password\",\n    \"status\": \"CONFIGURING\",\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"spec\": {\n          \"cpu_millis\": 3058,\n          \"memory_gbs\": 9396,\n          \"volume_type\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"spec\": {\n          \"cpu_millis\": 1657,\n          \"memory_gbs\": 491,\n          \"volume_type\": \"string\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"environment\": \"string\"\n    },\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    },\n    \"vpcEndpoint\": {},\n    \"forked_from\": {\n      \"project_id\": \"asda1b2c3\",\n      \"service_id\": \"bbss422fg\",\n      \"is_standby\": false\n    },\n    \"ha_replicas\": {\n      \"sync_replica_count\": 1,\n      \"replica_count\": 1\n    },\n    \"connection_pooler\": {\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      }\n    },\n    \"read_replica_sets\": [\n      {\n        \"id\": \"alb8jicdpr\",\n        \"name\": \"reporting-replica-1\",\n        \"status\": \"active\",\n        \"nodes\": 2,\n        \"cpu_millis\": 250,\n        \"memory_gbs\": 1,\n        \"metadata\": {\n          \"environment\": \"string\"\n        },\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        },\n        \"connection_pooler\": {\n          \"endpoint\": {\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"port\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"alb8jicdpr\",\n        \"name\": \"reporting-replica-1\",\n        \"status\": \"active\",\n        \"nodes\": 2,\n        \"cpu_millis\": 250,\n        \"memory_gbs\": 1,\n        \"metadata\": {\n          \"environment\": \"string\"\n        },\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        },\n        \"connection_pooler\": {\n          \"endpoint\": {\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"port\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  {\n    \"service_id\": \"string\",\n    \"project_id\": \"string\",\n    \"name\": \"string\",\n    \"region_code\": \"us-east-1\",\n    \"service_type\": \"VECTOR\",\n    \"created\": \"2015-04-29T06:08:02.979Z\",\n    \"initial_password\": \"a-very-secure-initial-password\",\n    \"status\": \"DELETING\",\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"spec\": {\n          \"cpu_millis\": 2369,\n          \"memory_gbs\": 9182,\n          \"volume_type\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"spec\": {\n          \"cpu_millis\": 7652,\n          \"memory_gbs\": 3653,\n          \"volume_type\": \"string\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"environment\": \"string\"\n    },\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    },\n    \"vpcEndpoint\": {},\n    \"forked_from\": {\n      \"project_id\": \"asda1b2c3\",\n      \"service_id\": \"bbss422fg\",\n      \"is_standby\": false\n    },\n    \"ha_replicas\": {\n      \"sync_replica_count\": 1,\n      \"replica_count\": 1\n    },\n    \"connection_pooler\": {\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      }\n    },\n    \"read_replica_sets\": [\n      {\n        \"id\": \"alb8jicdpr\",\n        \"name\": \"reporting-replica-1\",\n        \"status\": \"active\",\n        \"nodes\": 2,\n        \"cpu_millis\": 250,\n        \"memory_gbs\": 1,\n        \"metadata\": {\n          \"environment\": \"string\"\n        },\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        },\n        \"connection_pooler\": {\n          \"endpoint\": {\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"port\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"id\": \"alb8jicdpr\",\n        \"name\": \"reporting-replica-1\",\n        \"status\": \"active\",\n        \"nodes\": 2,\n        \"cpu_millis\": 250,\n        \"memory_gbs\": 1,\n        \"metadata\": {\n          \"environment\": \"string\"\n        },\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        },\n        \"connection_pooler\": {\n          \"endpoint\": {\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"port\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c79c098b-3d0a-497c-a3c6-006d1fd83b3a",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04081cba-1b9d-4587-8ceb-76e8d02df5a7",
+          "name": "Create a Service",
+          "request": {
+            "name": "Create a Service",
+            "description": {
+              "content": "Creates a new database service within a project. This is an asynchronous operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"addons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"region_code\": \"<string>\",\n  \"replica_count\": \"<integer>\",\n  \"cpu_millis\": \"<string>\",\n  \"memory_gbs\": \"<string>\",\n  \"environment_tag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf302edd-b919-484a-a21e-ae473051e0af",
+              "name": "Service creation request has been accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"my-production-db\",\n  \"addons\": [\n    \"time-series\",\n    \"ai\"\n  ],\n  \"region_code\": \"us-east-1\",\n  \"replica_count\": 2,\n  \"cpu_millis\": \"1000\",\n  \"memory_gbs\": \"4\",\n  \"environment_tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04cc66fe-352e-48a5-b6c0-fe37610afacf",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"my-production-db\",\n  \"addons\": [\n    \"time-series\",\n    \"ai\"\n  ],\n  \"region_code\": \"us-east-1\",\n  \"replica_count\": 2,\n  \"cpu_millis\": \"1000\",\n  \"memory_gbs\": \"4\",\n  \"environment_tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95b65fa2-3f85-4d96-91e9-d1254d9dd89e",
+          "name": "Get a Service",
+          "request": {
+            "name": "Get a Service",
+            "description": {
+              "content": "Retrieves the details of a specific service by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9e14015-027a-4c95-9e77-707cade4b99e",
+              "name": "Service details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc459b39-66e6-4043-9a98-c78834c5f38f",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e9f2ac0-a895-4e09-9309-92761a2fc1e4",
+          "name": "Delete a Service",
+          "request": {
+            "name": "Delete a Service",
+            "description": {
+              "content": "Deletes a specific service. This is an asynchronous operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55a8bf1d-ae5a-44c6-86c9-3dffe2426964",
+              "name": "Deletion request has been accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45daa930-8822-4158-9d35-0f1485bb37d7",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa2e3a9f-f9ef-473c-a129-fee50cac5589",
+          "name": "Start a Service",
+          "request": {
+            "name": "Start a Service",
+            "description": {
+              "content": "Starts a stopped service within a project. This is an asynchronous operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a57ff54-e4d1-47a9-a339-8b9c4cfb1ce1",
+              "name": "Service start request has been accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37ae356e-1284-4b99-baec-81ac53761d5f",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "402c0eb3-1dcf-4ead-953b-92d50f09d61f",
+          "name": "Stop a Service",
+          "request": {
+            "name": "Stop a Service",
+            "description": {
+              "content": "Stops a running service within a project. This is an asynchronous operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c6cf6d4-9cf9-42b9-98f4-3112a0e83611",
+              "name": "Service stop request has been accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bcc2028-3465-465b-bc1d-bfe4840967e3",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4234491-42a0-4b80-92f4-4b67c7e5062e",
+          "name": "Attach Service to VPC",
+          "request": {
+            "name": "Attach Service to VPC",
+            "description": {
+              "content": "Associates a service with a VPC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "attachToVPC"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vpc_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eeff46bf-e528-4e97-b67a-63e50b673406",
+              "name": "The action was completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "attachToVPC"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vpc_id\": \"1234567890\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Action completed successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05affc54-2c20-4dac-9600-c3d6a6731dfc",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "attachToVPC"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vpc_id\": \"1234567890\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4982dc7f-57b5-4e7b-9aa4-bf8b59ce8479",
+          "name": "Detach Service from VPC",
+          "request": {
+            "name": "Detach Service from VPC",
+            "description": {
+              "content": "Disassociates a service from its VPC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "detachFromVPC"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vpc_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3770b47-6d94-478b-a745-89271b2a7cf8",
+              "name": "The action was completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "detachFromVPC"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vpc_id\": \"1234567890\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Action completed successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6009e41-3cdd-4b57-bb07-4448be235320",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "detachFromVPC"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vpc_id\": \"1234567890\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39233ba2-2d1e-40ac-8404-b32fe2b8212c",
+          "name": "Resize a Service",
+          "request": {
+            "name": "Resize a Service",
+            "description": {
+              "content": "Changes the CPU and memory allocation for a specific service within a project. This is an asynchronous operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "resize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpu_millis\": \"<string>\",\n  \"memory_gbs\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3788a6a-a851-4ebe-8104-e5ae1e41b3bd",
+              "name": "Resize request has been accepted and is in progress.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cpu_millis\": \"1000\",\n  \"memory_gbs\": \"4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "843907aa-5a27-45fb-bd05-a09b738db33d",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cpu_millis\": \"1000\",\n  \"memory_gbs\": \"4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50b1eac4-dbdc-480f-b3be-1e509df7874e",
+          "name": "Enable Connection Pooler for a Service",
+          "request": {
+            "name": "Enable Connection Pooler for a Service",
+            "description": {
+              "content": "Activates the connection pooler for a specific service within a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "enablePooler"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8feba685-4de1-4e6b-a1fe-c712ee971331",
+              "name": "The action was completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "enablePooler"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Action completed successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e0fbcff-2fe3-4319-83dd-cd61084e2571",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "enablePooler"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a663bf8-d05a-4efc-baf3-69edfb8730a7",
+          "name": "Disable Connection Pooler for a Service",
+          "request": {
+            "name": "Disable Connection Pooler for a Service",
+            "description": {
+              "content": "Deactivates the connection pooler for a specific service within a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "disablePooler"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbcc1f31-2b4f-489b-9553-451cce7edd48",
+              "name": "The action was completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "disablePooler"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Action completed successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba099758-5565-4ba4-850e-2e95967df587",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "disablePooler"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12dc88df-5ea3-44e6-9f18-1d713cf6d877",
+          "name": "Fork a Service",
+          "request": {
+            "name": "Fork a Service",
+            "description": {
+              "content": "Creates a new, independent service within a project by taking a snapshot of an existing one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "forkService"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fork_strategy\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cpu_millis\": \"<string>\",\n  \"memory_gbs\": \"<string>\",\n  \"target_time\": \"<dateTime>\",\n  \"environment_tag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cf827db-e8cd-49e8-8c8a-8ac4b4640993",
+              "name": "Fork request accepted. The response contains the details of the new service being created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "forkService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fork_strategy\": \"<string>\",\n  \"name\": \"my-production-db-fork\",\n  \"cpu_millis\": \"1000\",\n  \"memory_gbs\": \"4\",\n  \"target_time\": \"2024-01-01T00:00:00Z\",\n  \"environment_tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ea383bf-ab50-4953-96b4-615ed4f0302b",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "forkService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fork_strategy\": \"<string>\",\n  \"name\": \"my-production-db-fork\",\n  \"cpu_millis\": \"1000\",\n  \"memory_gbs\": \"4\",\n  \"target_time\": \"2024-01-01T00:00:00Z\",\n  \"environment_tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "798915af-6a0b-43cf-81e3-6e0ff4cb19ba",
+          "name": "Update Service Password",
+          "request": {
+            "name": "Update Service Password",
+            "description": {
+              "content": "Sets a new master password for the service within a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "updatePassword"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<password>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b951b1e4-1ec7-41f7-8b80-32a7c5043e15",
+              "name": "Password updated successfully. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "updatePassword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"a-very-secure-new-password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a9cdf93-e9a4-475b-999d-24c1860d0033",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "updatePassword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"a-very-secure-new-password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ded162fe-bf32-40b4-b77f-b6a6ed7e4dd5",
+          "name": "Set Environment for a Service",
+          "request": {
+            "name": "Set Environment for a Service",
+            "description": {
+              "content": "Sets the environment type for the service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "setEnvironment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"environment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8dfb3f01-1330-4d7d-971d-1938248caa65",
+              "name": "The action was completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "setEnvironment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"environment\": \"PROD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Action completed successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b00bbd69-a307-4591-994c-8cdf79224580",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "setEnvironment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"environment\": \"PROD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "301bb99e-3d26-48d2-9a2e-29b039271538",
+          "name": "Get service logs",
+          "request": {
+            "name": "Get service logs",
+            "description": {
+              "content": "Fetch logs for a specific service. Returns up to 500 log entries from\navailable logs. Supports pagination.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "node",
+                  "value": "<integer>",
+                  "description": "Specific service node to fetch logs from (for multi-node services)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for pagination (0-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<dateTime>",
+                  "description": "Fetch logs before this timestamp (RFC3339 format, e.g., 2024-01-15T10:00:00Z)"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Fetch logs after this timestamp (RFC3339 format, e.g., 2024-01-15T09:00:00Z)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Opaque pagination cursor returned as lastCursor in a previous response. When provided, returns the next page of logs older than the cursor position."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c805cc7-3f3b-4b73-9366-cdf8c1497872",
+              "name": "Service logs retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "node",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"logs\": [\n    \"string\",\n    \"string\"\n  ],\n  \"entries\": [\n    {\n      \"timestamp\": \"1963-03-04T03:40:45.592Z\",\n      \"message\": \"string\",\n      \"severity\": \"string\"\n    },\n    {\n      \"timestamp\": \"2022-08-05T17:24:53.058Z\",\n      \"message\": \"string\",\n      \"severity\": \"string\"\n    }\n  ],\n  \"lastCursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65243034-ee95-4039-a5f4-1461efd778d3",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "node",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5549306-b0da-488a-8a22-55c310f62dec",
+          "name": "Change HA configuration for a Service",
+          "request": {
+            "name": "Change HA configuration for a Service",
+            "description": {
+              "content": "Changes the HA configuration for a specific service. This is an asynchronous operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project_id",
+                "services",
+                ":service_id",
+                "setHA"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The unique identifier of the project."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) The unique identifier of the service."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sync_replica_count\": \"<integer>\",\n  \"replica_count\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "768e63bb-bba9-43d9-a6d9-00e87718caaf",
+              "name": "HA replica configuration updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "setHA"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sync_replica_count\": 1,\n  \"replica_count\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"service_id\": \"string\",\n  \"project_id\": \"string\",\n  \"name\": \"string\",\n  \"region_code\": \"us-east-1\",\n  \"service_type\": \"TIMESCALEDB\",\n  \"created\": \"1972-12-23T09:41:57.553Z\",\n  \"initial_password\": \"a-very-secure-initial-password\",\n  \"status\": \"UNSTABLE\",\n  \"resources\": [\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 5131,\n        \"memory_gbs\": 1205,\n        \"volume_type\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"spec\": {\n        \"cpu_millis\": 623,\n        \"memory_gbs\": 9824,\n        \"volume_type\": \"string\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"environment\": \"string\"\n  },\n  \"endpoint\": {\n    \"host\": \"my-service.com\",\n    \"port\": 8080\n  },\n  \"vpcEndpoint\": {},\n  \"forked_from\": {\n    \"project_id\": \"asda1b2c3\",\n    \"service_id\": \"bbss422fg\",\n    \"is_standby\": false\n  },\n  \"ha_replicas\": {\n    \"sync_replica_count\": 1,\n    \"replica_count\": 1\n  },\n  \"connection_pooler\": {\n    \"endpoint\": {\n      \"host\": \"my-service.com\",\n      \"port\": 8080\n    }\n  },\n  \"read_replica_sets\": [\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    },\n    {\n      \"id\": \"alb8jicdpr\",\n      \"name\": \"reporting-replica-1\",\n      \"status\": \"active\",\n      \"nodes\": 2,\n      \"cpu_millis\": 250,\n      \"memory_gbs\": 1,\n      \"metadata\": {\n        \"environment\": \"string\"\n      },\n      \"endpoint\": {\n        \"host\": \"my-service.com\",\n        \"port\": 8080\n      },\n      \"connection_pooler\": {\n        \"endpoint\": {\n          \"host\": \"my-service.com\",\n          \"port\": 8080\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "251a5a91-42ff-4b76-a8d3-1990b3326561",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project_id",
+                    "services",
+                    ":service_id",
+                    "setHA"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The unique identifier of the project."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) The unique identifier of the service."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sync_replica_count\": 1,\n  \"replica_count\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://console.cloud.tigerdata.com/public/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8cf3e15-170f-4847-9701-2e4d5b2b2d13",
+    "name": "Tiger Cloud Analytics Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A RESTful API for Tiger Cloud platform.\n\n\nContact Support:\n Name: Tiger Data Support",
+      "type": "text/plain"
+    }
+  }
+}

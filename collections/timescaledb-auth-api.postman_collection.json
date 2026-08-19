@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "2bccad9f-2225-43a9-b6b7-84ee312f1418",
+      "name": "Auth",
+      "description": {
+        "content": "Authentication and authorization information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba97165a-bd35-47f9-a276-8fa31cd19de9",
+          "name": "Get Authentication Info",
+          "request": {
+            "name": "Get Authentication Info",
+            "description": {
+              "content": "Returns information about the authentication credentials being used to access the API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b7fc1e0-8751-4c2f-acf5-ed9c0c71f580",
+              "name": "Authentication information retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"apiKey\",\n  \"apiKey\": {\n    \"public_key\": \"tskey_abc123\",\n    \"name\": \"my-production-token\",\n    \"created\": \"2024-01-15T10:30:00Z\",\n    \"project\": {\n      \"id\": \"rp1pz7uyae\",\n      \"name\": \"My Production Project\",\n      \"plan_type\": \"FREE\"\n    },\n    \"issuing_user\": {\n      \"id\": \"user123\",\n      \"name\": \"John Doe\",\n      \"email\": \"john.doe@example.com\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad6c02da-48cc-45a3-a107-edcc5b7ab01c",
+              "name": "Client error response (4xx status codes).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://console.cloud.tigerdata.com/public/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91af1d5e-533a-4de4-ba28-4e40692eed56",
+    "name": "Tiger Cloud Analytics Auth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A RESTful API for Tiger Cloud platform.\n\n\nContact Support:\n Name: Tiger Data Support",
+      "type": "text/plain"
+    }
+  }
+}
