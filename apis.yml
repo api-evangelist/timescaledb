@@ -7,6 +7,19 @@ description: >-
   (Hypercore), continuous aggregates, retention policies and hyperfunctions. The managed Tiger Cloud platform exposes a
   public REST API for managing projects, services, VPCs, peering and read replicas, while the database itself is
   consumed via standard PostgreSQL wire protocol.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -146,6 +159,16 @@ apis:
   - type: SDKs
     url: https://github.com/timescale/tiger-cli
 common:
+  - type: IssueTracker
+    url: https://github.com/timescale/timescaledb/issues
+  - type: Releases
+    url: https://github.com/timescale/timescaledb/releases
+  - type: SecurityPolicy
+    url: https://github.com/timescale/timescaledb/blob/main/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/timescale/timescaledb/blob/main/.github/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/timescale/timescaledb/blob/main/CONTRIBUTING.md
   - type: AgenticAccess
     url: agentic-access/timescaledb-agentic-access.yml
   - type: TrustCenter
