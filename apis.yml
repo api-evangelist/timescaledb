@@ -35,7 +35,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/timescaledb.png
 tags:
   - Database
-  - Time Series
+  - Time-Series
   - PostgreSQL
   - Open-Source
   - Cloud
@@ -146,7 +146,7 @@ apis:
   humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
   baseURL: https://console.cloud.tigerdata.com/public/api/v1
   tags:
-  - VPC
+  - VPCs
   tags_raw:
   - VPCs
   properties:
