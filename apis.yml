@@ -140,18 +140,16 @@ apis:
     url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
   - type: SDKs
     url: https://github.com/timescale/tiger-cli
-- aid: timescaledb:timescaledb-vpcs-api
-  name: TimescaleDB / Tiger Data VPCs API
+- aid: timescaledb:timescaledb-vp-cs-api
+  name: TimescaleDB / Tiger Data VP Cs API
   description: Manage VPCs and their peering connections.
-  humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  baseURL: https://console.cloud.tigerdata.com/public/api/v1
+  humanURL: https://www.tigerdata.com/docs/api/latest
+  baseURL: postgres://<host>:5432/<db>
   tags:
-  - VPC
-  tags_raw:
-  - VPCs
+  - VP Cs
   properties:
   - type: OpenAPI
-    url: openapi/timescaledb-vpcs-api-openapi.yml
+    url: openapi/timescaledb-vp-cs-api-openapi.yml
   - type: Documentation
     url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
   - type: OpenAPISource
