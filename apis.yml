@@ -146,6 +146,8 @@ apis:
   humanURL: https://www.tigerdata.com/docs/api/latest
   baseURL: postgres://<host>:5432/<db>
   tags:
+  - VPC
+  tags_raw:
   - VPCs
   properties:
   - type: OpenAPI
