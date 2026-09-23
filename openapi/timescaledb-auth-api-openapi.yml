@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiger Cloud Analytics Auth API
-  description: 'A RESTful API for Tiger Cloud platform.
-
-    '
+  title: Tiger Cloud Auth API
+  description: A RESTful API for Tiger Cloud platform.
   version: 1.0.0
   license:
     name: Proprietary

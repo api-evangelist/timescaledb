@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiger Cloud Analytics Read Replica Sets API
-  description: 'A RESTful API for Tiger Cloud platform.
-
-    '
+  title: Tiger Cloud Read Replica Sets API
+  description: A RESTful API for Tiger Cloud platform.
   version: 1.0.0
   license:
     name: Proprietary
@@ -161,15 +159,30 @@ components:
       properties:
         endpoint:
           $ref: '#/components/schemas/Endpoint'
-    Endpoint:
+    ReadReplicaSetCreate:
       type: object
+      required:
+      - name
+      - nodes
+      - cpu_millis
+      - memory_gbs
       properties:
-        host:
+        name:
           type: string
-          example: my-service.com
-        port:
+          description: A human-readable name for the read replica.
+          example: my-reporting-replica
+        nodes:
           type: integer
-          example: 8080
+          description: Number of nodes to create in the replica set.
+          example: 2
+        cpu_millis:
+          type: integer
+          description: The initial CPU allocation in milli-cores.
+          example: 250
+        memory_gbs:
+          type: integer
+          description: The initial memory allocation in gigabytes.
+          example: 1
     ReadReplicaSet:
       type: object
       properties:
@@ -211,6 +224,22 @@ components:
           $ref: '#/components/schemas/Endpoint'
         connection_pooler:
           $ref: '#/components/schemas/ConnectionPooler'
+    Endpoint:
+      type: object
+      properties:
+        host:
+          type: string
+          example: my-service.com
+        port:
+          type: integer
+          example: 8080
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     SetEnvironmentInput:
       type: object
       required:
@@ -238,37 +267,23 @@ components:
           type: string
           description: The new memory allocation in gigabytes.
           example: '4'
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    ReadReplicaSetCreate:
-      type: object
-      required:
-      - name
-      - nodes
-      - cpu_millis
-      - memory_gbs
-      properties:
-        name:
-          type: string
-          description: A human-readable name for the read replica.
-          example: my-reporting-replica
-        nodes:
-          type: integer
-          description: Number of nodes to create in the replica set.
-          example: 2
-        cpu_millis:
-          type: integer
-          description: The initial CPU allocation in milli-cores.
-          example: 250
-        memory_gbs:
-          type: integer
-          description: The initial memory allocation in gigabytes.
-          example: 1
+  responses:
+    ClientError:
+      description: Client error response (4xx status codes).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    SuccessMessage:
+      description: The action was completed successfully.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Action completed successfully.
   parameters:
     ReplicaSetId:
       name: replica_set_id
@@ -294,20 +309,3 @@ components:
       schema:
         type: string
         example: rp1pz7uyae
-  responses:
-    ClientError:
-      description: Client error response (4xx status codes).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    SuccessMessage:
-      description: The action was completed successfully.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Action completed successfully.
