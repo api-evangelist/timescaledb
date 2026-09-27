@@ -10,23 +10,20 @@
     "timescaledb-services-api-openapi.yml",
     "timescaledb-vpcs-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "timescaledb-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "timescaledb-openapi.yml: declared missing tag: Read Replica Sets",
-    "superseded outputs removed: timescaledb-vp-cs-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 6 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "timescaledb-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "timescaledb-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "timescaledb-read-replica-sets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "timescaledb-services-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "timescaledb-vp-cs-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "timescaledb-vpcs-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

@@ -74,14 +74,6 @@ paths:
         4XX:
           $ref: '#/components/responses/ClientError'
 components:
-  schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
   responses:
     ClientError:
       description: Client error response (4xx status codes).
@@ -100,3 +92,11 @@ components:
                 type: string
                 description: Status of the analytics operation
                 example: success
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Tiger Cloud VP Cs API
+  title: Tiger Cloud VPCs API
   description: A RESTful API for Tiger Cloud platform.
   version: 1.0.0
   license:
@@ -215,15 +215,6 @@ components:
         region_code:
           type: string
           example: us-east-1
-    VPCRename:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The new name for the VPC.
-          example: my-renamed-vpc
     PeeringCreate:
       type: object
       required:
@@ -281,6 +272,15 @@ components:
         error_message:
           type: string
           example: VPC not found
+    VPCRename:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The new name for the VPC.
+          example: my-renamed-vpc
     Error:
       type: object
       properties:
@@ -288,19 +288,20 @@ components:
           type: string
         message:
           type: string
-  responses:
-    ClientError:
-      description: Client error response (4xx status codes).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     PeeringId:
       name: peering_id
       in: path
       required: true
       description: The unique identifier of the VPC peering connection.
+      schema:
+        type: string
+        example: '1234567890'
+    VPCId:
+      name: vpc_id
+      in: path
+      required: true
+      description: The unique identifier of the VPC.
       schema:
         type: string
         example: '1234567890'
@@ -312,11 +313,10 @@ components:
       schema:
         type: string
         example: rp1pz7uyae
-    VPCId:
-      name: vpc_id
-      in: path
-      required: true
-      description: The unique identifier of the VPC.
-      schema:
-        type: string
-        example: '1234567890'
+  responses:
+    ClientError:
+      description: Client error response (4xx status codes).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

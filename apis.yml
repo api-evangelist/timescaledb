@@ -9,6 +9,10 @@ description: >-
   consumed via standard PostgreSQL wire protocol.
 deliveryModel:
   model: unknown
+  license_evidence:
+    repo: timescale/timescaledb
+    spdx: NOASSERTION
+    stars: 23588
   open_source: unknown
   commercial: true
   callable_host: true
@@ -18,7 +22,7 @@ deliveryModel:
   - openapi
   - pricing
   - repository-unlicensed
-  generated: '2026-08-28'
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -37,7 +41,7 @@ tags:
   - Database
   - Time Series
   - PostgreSQL
-  - Open-Source
+  - Open Source
   - Cloud
   - Hypertables
   - Continuous Aggregates
@@ -51,6 +55,7 @@ tags_raw:
   - Hypertables
   - Continuous Aggregates
   - Tiger Cloud
+  - Open-Source
 created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.23'

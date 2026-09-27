@@ -374,7 +374,73 @@ paths:
         4XX:
           $ref: '#/components/responses/ClientError'
 components:
+  responses:
+    SuccessMessage:
+      description: The action was completed successfully.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Action completed successfully.
+    ClientError:
+      description: Client error response (4xx status codes).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    ServiceCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: A human-readable name for the service.
+          example: my-production-db
+        addons:
+          type: array
+          items:
+            type: string
+            enum:
+            - time-series
+            - ai
+          description: List of addons to enable for the service. 'time-series' enables TimescaleDB, 'ai' enables AI/vector extensions.
+          example:
+          - time-series
+          - ai
+        region_code:
+          type: string
+          description: The region where the service will be created. If not provided, we'll choose the best region for you.
+          example: us-east-1
+        replica_count:
+          type: integer
+          description: Number of high-availability replicas to create (all replicas are asynchronous by default).
+          example: 2
+        cpu_millis:
+          type: string
+          description: The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service.
+          example: '1000'
+        memory_gbs:
+          type: string
+          description: The initial memory allocation in gigabytes, or 'shared' for a shared-resource service.
+          example: '4'
+        environment_tag:
+          $ref: '#/components/schemas/EnvironmentTag'
+          description: The environment tag for the service, 'DEV' by default.
+          default: DEV
+    Endpoint:
+      type: object
+      properties:
+        host:
+          type: string
+          example: my-service.com
+        port:
+          type: integer
+          example: 8080
     ReadReplicaSet:
       type: object
       properties:
@@ -416,48 +482,6 @@ components:
           $ref: '#/components/schemas/Endpoint'
         connection_pooler:
           $ref: '#/components/schemas/ConnectionPooler'
-    Endpoint:
-      type: object
-      properties:
-        host:
-          type: string
-          example: my-service.com
-        port:
-          type: integer
-          example: 8080
-    ServiceType:
-      type: string
-      enum:
-      - TIMESCALEDB
-      - POSTGRES
-      - VECTOR
-    SetEnvironmentInput:
-      type: object
-      required:
-      - environment
-      properties:
-        environment:
-          type: string
-          description: The target environment for the service.
-          enum:
-          - PROD
-          - DEV
-      example:
-        environment: PROD
-    DeployStatus:
-      type: string
-      enum:
-      - QUEUED
-      - DELETING
-      - CONFIGURING
-      - READY
-      - DELETED
-      - UNSTABLE
-      - PAUSING
-      - PAUSED
-      - RESUMING
-      - UPGRADING
-      - OPTIMIZING
     ConnectionPooler:
       type: object
       properties:
@@ -474,30 +498,6 @@ components:
           type: integer
           description: Number of high-availability replicas (all replicas are asynchronous by default).
           example: 1
-    ServiceLogEntry:
-      type: object
-      required:
-      - timestamp
-      - message
-      - severity
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp of the log entry (RFC3339 format)
-        message:
-          type: string
-          description: Log message text
-        severity:
-          type: string
-          description: PostgreSQL severity level (e.g. LOG, WARNING, ERROR, FATAL)
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     ForkSpec:
       type: object
       properties:
@@ -522,6 +522,49 @@ components:
           description: Number of high-availability replicas (all replicas are asynchronous by default).
           example: 1
       description: At least one of sync_replica_count or replica_count must be provided.
+    ForkStrategy:
+      type: string
+      enum:
+      - LAST_SNAPSHOT
+      - NOW
+      - PITR
+      description: 'Strategy for creating the fork:
+
+        - LAST_SNAPSHOT: Use existing snapshot for fast fork
+
+        - NOW: Create new snapshot for up-to-date fork
+
+        - PITR: Point-in-time recovery using target_time
+
+        '
+    ResizeInput:
+      type: object
+      required:
+      - cpu_millis
+      - memory_gbs
+      properties:
+        cpu_millis:
+          type: string
+          description: The new CPU allocation in milli-cores.
+          example: '1000'
+        memory_gbs:
+          type: string
+          description: The new memory allocation in gigabytes.
+          example: '4'
+    DeployStatus:
+      type: string
+      enum:
+      - QUEUED
+      - DELETING
+      - CONFIGURING
+      - READY
+      - DELETED
+      - UNSTABLE
+      - PAUSING
+      - PAUSED
+      - RESUMING
+      - UPGRADING
+      - OPTIMIZING
     ServiceLogs:
       type: object
       required:
@@ -540,103 +583,36 @@ components:
         lastCursor:
           type: string
           description: Opaque cursor for the next page of results. Present when more log entries exist older than the last entry in this response. Absent when there are no further results.
-    ForkServiceCreate:
+    ServiceLogEntry:
       type: object
       required:
-      - fork_strategy
+      - timestamp
+      - message
+      - severity
       properties:
-        name:
-          type: string
-          description: A human-readable name for the forked service. If not provided, will use parent service name with "-fork" suffix.
-          example: my-production-db-fork
-        cpu_millis:
-          type: string
-          description: The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
-          example: '1000'
-        memory_gbs:
-          type: string
-          description: The initial memory allocation in gigabytes, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
-          example: '4'
-        fork_strategy:
-          $ref: '#/components/schemas/ForkStrategy'
-          description: Strategy for creating the fork. This field is required.
-        target_time:
+        timestamp:
           type: string
           format: date-time
-          description: Target time for point-in-time recovery. Required when fork_strategy is PITR.
-          example: '2024-01-01T00:00:00Z'
-        environment_tag:
-          $ref: '#/components/schemas/EnvironmentTag'
-          description: The environment tag for the forked service, 'DEV' by default.
-          default: DEV
-      description: 'Create a fork of an existing service. Service type, region code, and storage are always inherited from the parent service.
-
-        HA replica count is always set to 0 for forked services.
-
-        '
-    ResizeInput:
+          description: Timestamp of the log entry (RFC3339 format)
+        message:
+          type: string
+          description: Log message text
+        severity:
+          type: string
+          description: PostgreSQL severity level (e.g. LOG, WARNING, ERROR, FATAL)
+    ServiceType:
+      type: string
+      enum:
+      - TIMESCALEDB
+      - POSTGRES
+      - VECTOR
+    Error:
       type: object
-      required:
-      - cpu_millis
-      - memory_gbs
       properties:
-        cpu_millis:
+        code:
           type: string
-          description: The new CPU allocation in milli-cores.
-          example: '1000'
-        memory_gbs:
+        message:
           type: string
-          description: The new memory allocation in gigabytes.
-          example: '4'
-    ServiceVPCInput:
-      type: object
-      required:
-      - vpc_id
-      properties:
-        vpc_id:
-          type: string
-          description: The ID of the VPC to attach the service to.
-          example: '1234567890'
-    ServiceCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: A human-readable name for the service.
-          example: my-production-db
-        addons:
-          type: array
-          items:
-            type: string
-            enum:
-            - time-series
-            - ai
-          description: List of addons to enable for the service. 'time-series' enables TimescaleDB, 'ai' enables AI/vector extensions.
-          example:
-          - time-series
-          - ai
-        region_code:
-          type: string
-          description: The region where the service will be created. If not provided, we'll choose the best region for you.
-          example: us-east-1
-        replica_count:
-          type: integer
-          description: Number of high-availability replicas to create (all replicas are asynchronous by default).
-          example: 2
-        cpu_millis:
-          type: string
-          description: The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service.
-          example: '1000'
-        memory_gbs:
-          type: string
-          description: The initial memory allocation in gigabytes, or 'shared' for a shared-resource service.
-          example: '4'
-        environment_tag:
-          $ref: '#/components/schemas/EnvironmentTag'
-          description: The environment tag for the service, 'DEV' by default.
-          default: DEV
     Service:
       type: object
       properties:
@@ -714,6 +690,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ReadReplicaSet'
+    SetEnvironmentInput:
+      type: object
+      required:
+      - environment
+      properties:
+        environment:
+          type: string
+          description: The target environment for the service.
+          enum:
+          - PROD
+          - DEV
+      example:
+        environment: PROD
+    EnvironmentTag:
+      type: string
+      enum:
+      - DEV
+      - PROD
+      description: The environment tag for the service.
     UpdatePasswordInput:
       type: object
       required:
@@ -724,53 +719,50 @@ components:
           description: The new password.
           format: password
           example: a-very-secure-new-password
-    EnvironmentTag:
-      type: string
-      enum:
-      - DEV
-      - PROD
-      description: The environment tag for the service.
-    ForkStrategy:
-      type: string
-      enum:
-      - LAST_SNAPSHOT
-      - NOW
-      - PITR
-      description: 'Strategy for creating the fork:
+    ServiceVPCInput:
+      type: object
+      required:
+      - vpc_id
+      properties:
+        vpc_id:
+          type: string
+          description: The ID of the VPC to attach the service to.
+          example: '1234567890'
+    ForkServiceCreate:
+      type: object
+      required:
+      - fork_strategy
+      properties:
+        name:
+          type: string
+          description: A human-readable name for the forked service. If not provided, will use parent service name with "-fork" suffix.
+          example: my-production-db-fork
+        cpu_millis:
+          type: string
+          description: The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
+          example: '1000'
+        memory_gbs:
+          type: string
+          description: The initial memory allocation in gigabytes, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
+          example: '4'
+        fork_strategy:
+          $ref: '#/components/schemas/ForkStrategy'
+          description: Strategy for creating the fork. This field is required.
+        target_time:
+          type: string
+          format: date-time
+          description: Target time for point-in-time recovery. Required when fork_strategy is PITR.
+          example: '2024-01-01T00:00:00Z'
+        environment_tag:
+          $ref: '#/components/schemas/EnvironmentTag'
+          description: The environment tag for the forked service, 'DEV' by default.
+          default: DEV
+      description: 'Create a fork of an existing service. Service type, region code, and storage are always inherited from the parent service.
 
-        - LAST_SNAPSHOT: Use existing snapshot for fast fork
-
-        - NOW: Create new snapshot for up-to-date fork
-
-        - PITR: Point-in-time recovery using target_time
+        HA replica count is always set to 0 for forked services.
 
         '
-  responses:
-    ClientError:
-      description: Client error response (4xx status codes).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    SuccessMessage:
-      description: The action was completed successfully.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Action completed successfully.
   parameters:
-    ProjectId:
-      name: project_id
-      in: path
-      required: true
-      description: The unique identifier of the project.
-      schema:
-        type: string
-        example: rp1pz7uyae
     ServiceId:
       name: service_id
       in: path
@@ -779,3 +771,11 @@ components:
       schema:
         type: string
         example: d1k5vk7hf2
+    ProjectId:
+      name: project_id
+      in: path
+      required: true
+      description: The unique identifier of the project.
+      schema:
+        type: string
+        example: rp1pz7uyae
