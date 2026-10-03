@@ -33,7 +33,21 @@ paths:
         4XX:
           $ref: '#/components/responses/ClientError'
 components:
+  responses:
+    ClientError:
+      description: Client error response (4xx status codes).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     AuthInfo:
       type: object
       required:
@@ -110,17 +124,3 @@ components:
                   format: email
                   description: The user's email
                   example: john.doe@example.com
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-  responses:
-    ClientError:
-      description: Client error response (4xx status codes).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'

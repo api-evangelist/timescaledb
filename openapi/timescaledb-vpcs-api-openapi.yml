@@ -215,22 +215,6 @@ components:
         region_code:
           type: string
           example: us-east-1
-    PeeringCreate:
-      type: object
-      required:
-      - peer_account_id
-      - peer_region_code
-      - peer_vpc_id
-      properties:
-        peer_account_id:
-          type: string
-          example: acc-12345
-        peer_region_code:
-          type: string
-          example: aws-us-east-1
-        peer_vpc_id:
-          type: string
-          example: '1234567890'
     VPC:
       type: object
       properties:
@@ -247,6 +231,38 @@ components:
         region_code:
           type: string
           example: us-east-1
+    VPCRename:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The new name for the VPC.
+          example: my-renamed-vpc
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    PeeringCreate:
+      type: object
+      required:
+      - peer_account_id
+      - peer_region_code
+      - peer_vpc_id
+      properties:
+        peer_account_id:
+          type: string
+          example: acc-12345
+        peer_region_code:
+          type: string
+          example: aws-us-east-1
+        peer_vpc_id:
+          type: string
+          example: '1234567890'
     Peering:
       type: object
       properties:
@@ -272,23 +288,22 @@ components:
         error_message:
           type: string
           example: VPC not found
-    VPCRename:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The new name for the VPC.
-          example: my-renamed-vpc
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
+  responses:
+    ClientError:
+      description: Client error response (4xx status codes).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    ProjectId:
+      name: project_id
+      in: path
+      required: true
+      description: The unique identifier of the project.
+      schema:
+        type: string
+        example: rp1pz7uyae
     PeeringId:
       name: peering_id
       in: path
@@ -305,18 +320,3 @@ components:
       schema:
         type: string
         example: '1234567890'
-    ProjectId:
-      name: project_id
-      in: path
-      required: true
-      description: The unique identifier of the project.
-      schema:
-        type: string
-        example: rp1pz7uyae
-  responses:
-    ClientError:
-      description: Client error response (4xx status codes).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
