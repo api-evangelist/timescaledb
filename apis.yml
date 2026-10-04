@@ -164,6 +164,9 @@ apis:
   - type: SDKs
     url: https://github.com/timescale/tiger-cli
 common:
+  - type: CapabilityMap
+    url: capabilities/timescaledb-capability-edges.yml
+    name: TimescaleDB / Tiger Data Business Capability Map
   - type: IssueTracker
     url: https://github.com/timescale/timescaledb/issues
   - type: Releases

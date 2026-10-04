@@ -1,0 +1,55 @@
+slug: timescaledb
+provider: TimescaleDB / Tiger Data
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: VPCs
+  spec_file: timescaledb-vpcs-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: createVPC  Create a VPC; getVPCPeerings  List VPC Peerings
+  reason: Virtual private cloud and peering lifecycle management — cloud network infrastructure, unambiguously
+    IT Infrastructure Management.
+- tag: Services
+  spec_file: timescaledb-services-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: 'createService  Create a Service; stopService  Stop a Service; resizeService  Resize a Service;
+    schemas: HAReplica, ServiceLogs, DeployStatus'
+  reason: Managed PostgreSQL instance lifecycle — create, start/stop, resize, fork, HA replica, VPC attachment,
+    logs. This is operation of cloud database infrastructure, mapping to IT Infrastructure Management.
+- tag: Read Replica Sets
+  spec_file: timescaledb-read-replica-sets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: createReplicaSet  Create a Read Replica Set; enableReplicaPooler  Enable Connection Pooler
+    for a Read Replica
+  reason: 'Same surface as the Tiger Cloud replica API: provisioning, resizing and deletion of managed
+    database read replicas plus connection pooling — cloud database infrastructure management.'
+- tag: Analytics
+  spec_file: timescaledb-analytics-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.7
+  evidence: POST /analytics/identify  identifyUser  Identify a user; POST /analytics/track  trackEvent  Track
+    an analytics event
+  reason: Two endpoints that identify a user and emit usage events into an analytics pipeline — product
+    usage telemetry capture, not BI reporting or customer identification. Thin surface (no event schemas
+    exposed), hence moderate confidence.
