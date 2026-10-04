@@ -154,19 +154,6 @@ paths:
           $ref: '#/components/responses/ClientError'
 components:
   schemas:
-    SetEnvironmentInput:
-      type: object
-      required:
-      - environment
-      properties:
-        environment:
-          type: string
-          description: The target environment for the service.
-          enum:
-          - PROD
-          - DEV
-      example:
-        environment: PROD
     ResizeInput:
       type: object
       required:
@@ -181,11 +168,13 @@ components:
           type: string
           description: The new memory allocation in gigabytes.
           example: '4'
-    ConnectionPooler:
+    Error:
       type: object
       properties:
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
+        code:
+          type: string
+        message:
+          type: string
     ReadReplicaSet:
       type: object
       properties:
@@ -227,6 +216,20 @@ components:
           $ref: '#/components/schemas/Endpoint'
         connection_pooler:
           $ref: '#/components/schemas/ConnectionPooler'
+    Endpoint:
+      type: object
+      properties:
+        host:
+          type: string
+          example: my-service.com
+        port:
+          type: integer
+          example: 8080
+    ConnectionPooler:
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
     ReadReplicaSetCreate:
       type: object
       required:
@@ -251,22 +254,44 @@ components:
           type: integer
           description: The initial memory allocation in gigabytes.
           example: 1
-    Error:
+    SetEnvironmentInput:
       type: object
+      required:
+      - environment
       properties:
-        code:
+        environment:
           type: string
-        message:
-          type: string
-    Endpoint:
-      type: object
-      properties:
-        host:
-          type: string
-          example: my-service.com
-        port:
-          type: integer
-          example: 8080
+          description: The target environment for the service.
+          enum:
+          - PROD
+          - DEV
+      example:
+        environment: PROD
+  parameters:
+    ReplicaSetId:
+      name: replica_set_id
+      in: path
+      required: true
+      description: The unique identifier of the read replica set.
+      schema:
+        type: string
+        example: alb8jicdpr
+    ServiceId:
+      name: service_id
+      in: path
+      required: true
+      description: The unique identifier of the service.
+      schema:
+        type: string
+        example: d1k5vk7hf2
+    ProjectId:
+      name: project_id
+      in: path
+      required: true
+      description: The unique identifier of the project.
+      schema:
+        type: string
+        example: rp1pz7uyae
   responses:
     ClientError:
       description: Client error response (4xx status codes).
@@ -284,28 +309,3 @@ components:
               message:
                 type: string
                 example: Action completed successfully.
-  parameters:
-    ProjectId:
-      name: project_id
-      in: path
-      required: true
-      description: The unique identifier of the project.
-      schema:
-        type: string
-        example: rp1pz7uyae
-    ReplicaSetId:
-      name: replica_set_id
-      in: path
-      required: true
-      description: The unique identifier of the read replica set.
-      schema:
-        type: string
-        example: alb8jicdpr
-    ServiceId:
-      name: service_id
-      in: path
-      required: true
-      description: The unique identifier of the service.
-      schema:
-        type: string
-        example: d1k5vk7hf2

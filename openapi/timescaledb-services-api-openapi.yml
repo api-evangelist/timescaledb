@@ -374,24 +374,32 @@ paths:
         4XX:
           $ref: '#/components/responses/ClientError'
 components:
-  responses:
-    ClientError:
-      description: Client error response (4xx status codes).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    SuccessMessage:
-      description: The action was completed successfully.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Action completed successfully.
   schemas:
+    ForkStrategy:
+      type: string
+      enum:
+      - LAST_SNAPSHOT
+      - NOW
+      - PITR
+      description: 'Strategy for creating the fork:
+
+        - LAST_SNAPSHOT: Use existing snapshot for fast fork
+
+        - NOW: Create new snapshot for up-to-date fork
+
+        - PITR: Point-in-time recovery using target_time
+
+        '
+    UpdatePasswordInput:
+      type: object
+      required:
+      - password
+      properties:
+        password:
+          type: string
+          description: The new password.
+          format: password
+          example: a-very-secure-new-password
     DeployStatus:
       type: string
       enum:
@@ -406,6 +414,91 @@ components:
       - RESUMING
       - UPGRADING
       - OPTIMIZING
+    EnvironmentTag:
+      type: string
+      enum:
+      - DEV
+      - PROD
+      description: The environment tag for the service.
+    Endpoint:
+      type: object
+      properties:
+        host:
+          type: string
+          example: my-service.com
+        port:
+          type: integer
+          example: 8080
+    ForkSpec:
+      type: object
+      properties:
+        project_id:
+          type: string
+          example: asda1b2c3
+        service_id:
+          type: string
+          example: bbss422fg
+        is_standby:
+          type: boolean
+          example: false
+    ResizeInput:
+      type: object
+      required:
+      - cpu_millis
+      - memory_gbs
+      properties:
+        cpu_millis:
+          type: string
+          description: The new CPU allocation in milli-cores.
+          example: '1000'
+        memory_gbs:
+          type: string
+          description: The new memory allocation in gigabytes.
+          example: '4'
+    ServiceLogEntry:
+      type: object
+      required:
+      - timestamp
+      - message
+      - severity
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the log entry (RFC3339 format)
+        message:
+          type: string
+          description: Log message text
+        severity:
+          type: string
+          description: PostgreSQL severity level (e.g. LOG, WARNING, ERROR, FATAL)
+    ServiceVPCInput:
+      type: object
+      required:
+      - vpc_id
+      properties:
+        vpc_id:
+          type: string
+          description: The ID of the VPC to attach the service to.
+          example: '1234567890'
+    SetHAReplicaInput:
+      type: object
+      properties:
+        sync_replica_count:
+          type: integer
+          description: Number of synchronous high-availability replicas.
+          example: 1
+        replica_count:
+          type: integer
+          description: Number of high-availability replicas (all replicas are asynchronous by default).
+          example: 1
+      description: At least one of sync_replica_count or replica_count must be provided.
+    ServiceType:
+      type: string
+      enum:
+      - TIMESCALEDB
+      - POSTGRES
+      - VECTOR
     ServiceLogs:
       type: object
       required:
@@ -424,72 +517,6 @@ components:
         lastCursor:
           type: string
           description: Opaque cursor for the next page of results. Present when more log entries exist older than the last entry in this response. Absent when there are no further results.
-    SetEnvironmentInput:
-      type: object
-      required:
-      - environment
-      properties:
-        environment:
-          type: string
-          description: The target environment for the service.
-          enum:
-          - PROD
-          - DEV
-      example:
-        environment: PROD
-    ForkServiceCreate:
-      type: object
-      required:
-      - fork_strategy
-      properties:
-        name:
-          type: string
-          description: A human-readable name for the forked service. If not provided, will use parent service name with "-fork" suffix.
-          example: my-production-db-fork
-        cpu_millis:
-          type: string
-          description: The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
-          example: '1000'
-        memory_gbs:
-          type: string
-          description: The initial memory allocation in gigabytes, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
-          example: '4'
-        fork_strategy:
-          $ref: '#/components/schemas/ForkStrategy'
-          description: Strategy for creating the fork. This field is required.
-        target_time:
-          type: string
-          format: date-time
-          description: Target time for point-in-time recovery. Required when fork_strategy is PITR.
-          example: '2024-01-01T00:00:00Z'
-        environment_tag:
-          $ref: '#/components/schemas/EnvironmentTag'
-          description: The environment tag for the forked service, 'DEV' by default.
-          default: DEV
-      description: 'Create a fork of an existing service. Service type, region code, and storage are always inherited from the parent service.
-
-        HA replica count is always set to 0 for forked services.
-
-        '
-    ResizeInput:
-      type: object
-      required:
-      - cpu_millis
-      - memory_gbs
-      properties:
-        cpu_millis:
-          type: string
-          description: The new CPU allocation in milli-cores.
-          example: '1000'
-        memory_gbs:
-          type: string
-          description: The new memory allocation in gigabytes.
-          example: '4'
-    ConnectionPooler:
-      type: object
-      properties:
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
     ServiceCreate:
       type: object
       required:
@@ -530,22 +557,104 @@ components:
           $ref: '#/components/schemas/EnvironmentTag'
           description: The environment tag for the service, 'DEV' by default.
           default: DEV
-    EnvironmentTag:
-      type: string
-      enum:
-      - DEV
-      - PROD
-      description: The environment tag for the service.
-    UpdatePasswordInput:
+    ReadReplicaSet:
+      type: object
+      properties:
+        id:
+          type: string
+          example: alb8jicdpr
+        name:
+          type: string
+          example: reporting-replica-1
+        status:
+          type: string
+          enum:
+          - creating
+          - active
+          - resizing
+          - deleting
+          - error
+          example: active
+        nodes:
+          type: integer
+          description: Number of nodes in the replica set.
+          example: 2
+        cpu_millis:
+          type: integer
+          description: CPU allocation in milli-cores.
+          example: 250
+        memory_gbs:
+          type: integer
+          description: Memory allocation in gigabytes.
+          example: 1
+        metadata:
+          type: object
+          description: Additional metadata for the read replica set
+          properties:
+            environment:
+              type: string
+              description: Environment tag for the read replica set
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
+        connection_pooler:
+          $ref: '#/components/schemas/ConnectionPooler'
+    HAReplica:
+      type: object
+      properties:
+        sync_replica_count:
+          type: integer
+          description: Number of synchronous high-availability replicas.
+          example: 1
+        replica_count:
+          type: integer
+          description: Number of high-availability replicas (all replicas are asynchronous by default).
+          example: 1
+    ConnectionPooler:
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
+    ForkServiceCreate:
       type: object
       required:
-      - password
+      - fork_strategy
       properties:
-        password:
+        name:
           type: string
-          description: The new password.
-          format: password
-          example: a-very-secure-new-password
+          description: A human-readable name for the forked service. If not provided, will use parent service name with "-fork" suffix.
+          example: my-production-db-fork
+        cpu_millis:
+          type: string
+          description: The initial CPU allocation in milli-cores, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
+          example: '1000'
+        memory_gbs:
+          type: string
+          description: The initial memory allocation in gigabytes, or 'shared' for a shared-resource service. If not provided, will inherit from parent service.
+          example: '4'
+        fork_strategy:
+          $ref: '#/components/schemas/ForkStrategy'
+          description: Strategy for creating the fork. This field is required.
+        target_time:
+          type: string
+          format: date-time
+          description: Target time for point-in-time recovery. Required when fork_strategy is PITR.
+          example: '2024-01-01T00:00:00Z'
+        environment_tag:
+          $ref: '#/components/schemas/EnvironmentTag'
+          description: The environment tag for the forked service, 'DEV' by default.
+          default: DEV
+      description: 'Create a fork of an existing service. Service type, region code, and storage are always inherited from the parent service.
+
+        HA replica count is always set to 0 for forked services.
+
+        '
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     Service:
       type: object
       properties:
@@ -623,145 +732,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ReadReplicaSet'
-    SetHAReplicaInput:
-      type: object
-      properties:
-        sync_replica_count:
-          type: integer
-          description: Number of synchronous high-availability replicas.
-          example: 1
-        replica_count:
-          type: integer
-          description: Number of high-availability replicas (all replicas are asynchronous by default).
-          example: 1
-      description: At least one of sync_replica_count or replica_count must be provided.
-    ForkStrategy:
-      type: string
-      enum:
-      - LAST_SNAPSHOT
-      - NOW
-      - PITR
-      description: 'Strategy for creating the fork:
-
-        - LAST_SNAPSHOT: Use existing snapshot for fast fork
-
-        - NOW: Create new snapshot for up-to-date fork
-
-        - PITR: Point-in-time recovery using target_time
-
-        '
-    ForkSpec:
-      type: object
-      properties:
-        project_id:
-          type: string
-          example: asda1b2c3
-        service_id:
-          type: string
-          example: bbss422fg
-        is_standby:
-          type: boolean
-          example: false
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    ServiceVPCInput:
+    SetEnvironmentInput:
       type: object
       required:
-      - vpc_id
+      - environment
       properties:
-        vpc_id:
+        environment:
           type: string
-          description: The ID of the VPC to attach the service to.
-          example: '1234567890'
-    ServiceType:
-      type: string
-      enum:
-      - TIMESCALEDB
-      - POSTGRES
-      - VECTOR
-    HAReplica:
-      type: object
-      properties:
-        sync_replica_count:
-          type: integer
-          description: Number of synchronous high-availability replicas.
-          example: 1
-        replica_count:
-          type: integer
-          description: Number of high-availability replicas (all replicas are asynchronous by default).
-          example: 1
-    Endpoint:
-      type: object
-      properties:
-        host:
-          type: string
-          example: my-service.com
-        port:
-          type: integer
-          example: 8080
-    ReadReplicaSet:
-      type: object
-      properties:
-        id:
-          type: string
-          example: alb8jicdpr
-        name:
-          type: string
-          example: reporting-replica-1
-        status:
-          type: string
+          description: The target environment for the service.
           enum:
-          - creating
-          - active
-          - resizing
-          - deleting
-          - error
-          example: active
-        nodes:
-          type: integer
-          description: Number of nodes in the replica set.
-          example: 2
-        cpu_millis:
-          type: integer
-          description: CPU allocation in milli-cores.
-          example: 250
-        memory_gbs:
-          type: integer
-          description: Memory allocation in gigabytes.
-          example: 1
-        metadata:
-          type: object
-          description: Additional metadata for the read replica set
-          properties:
-            environment:
-              type: string
-              description: Environment tag for the read replica set
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
-        connection_pooler:
-          $ref: '#/components/schemas/ConnectionPooler'
-    ServiceLogEntry:
-      type: object
-      required:
-      - timestamp
-      - message
-      - severity
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp of the log entry (RFC3339 format)
-        message:
-          type: string
-          description: Log message text
-        severity:
-          type: string
-          description: PostgreSQL severity level (e.g. LOG, WARNING, ERROR, FATAL)
+          - PROD
+          - DEV
+      example:
+        environment: PROD
   parameters:
     ServiceId:
       name: service_id
@@ -779,3 +762,20 @@ components:
       schema:
         type: string
         example: rp1pz7uyae
+  responses:
+    ClientError:
+      description: Client error response (4xx status codes).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    SuccessMessage:
+      description: The action was completed successfully.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Action completed successfully.
