@@ -57,7 +57,7 @@ tags_raw:
   - Tiger Cloud
   - Open-Source
 created: '2026-05-08'
-modified: '2026-05-19'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: timescaledb:postgres-wire
@@ -164,6 +164,10 @@ apis:
   - type: SDKs
     url: https://github.com/timescale/tiger-cli
 common:
+  - url: https://www.tigerdata.com/blog
+    type: Blog
+  - url: https://www.tigerdata.com/blog/rss
+    type: BlogRSS
   - type: CapabilityMap
     url: capabilities/timescaledb-capability-edges.yml
     name: TimescaleDB / Tiger Data Business Capability Map
