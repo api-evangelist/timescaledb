@@ -1,219 +1,32 @@
 aid: timescaledb
-url: https://raw.githubusercontent.com/api-evangelist/timescaledb/refs/heads/main/apis.yml
 name: TimescaleDB / Tiger Data
-kind: company
-description: >-
-  TimescaleDB (now part of Tiger Data) is a PostgreSQL-native time-series database featuring hypertables, columnstore
-  (Hypercore), continuous aggregates, retention policies and hyperfunctions. The managed Tiger Cloud platform exposes a
-  public REST API for managing projects, services, VPCs, peering and read replicas, while the database itself is
-  consumed via standard PostgreSQL wire protocol.
-deliveryModel:
-  model: unknown
-  license_evidence:
-    repo: timescale/timescaledb
-    spdx: NOASSERTION
-    stars: 23588
-  open_source: unknown
-  commercial: true
-  callable_host: true
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
-  source:
-  - openapi
-  - pricing
-  - repository-unlicensed
-  generated: '2026-09-25'
-  method: derived
-accessModel:
-  pricing: freemium
-  onboarding: unknown
-  trial: true
-  try_now: false
-  public: false
-  label: Freemium (free trial)
-  confidence: medium
-  source:
-  - plans
-  generated: '2026-07-22'
-  method: derived
+description: 'TimescaleDB is the open-source PostgreSQL extension for time-series data built by Timescale (now
+  Tiger Data). It is a product, not a separate API provider: the Tiger Cloud REST APIs and the PostgreSQL wire
+  interface are profiled in the timescale repository, which is canonical. Consolidated 2026-10-13, approved
+  by Kin Lane.'
+type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/timescaledb.png
 tags:
-  - Database
-  - Time Series
-  - PostgreSQL
-  - Open Source
-  - Cloud
-  - Hypertables
-  - Continuous Aggregates
-  - Tiger Cloud
-tags_raw:
-  - Database
-  - Time-Series
-  - PostgreSQL
-  - Open Source
-  - Cloud
-  - Hypertables
-  - Continuous Aggregates
-  - Tiger Cloud
-  - Open-Source
+- Database
+- Time Series
+- PostgreSQL
+- Open Source
+- Cloud
+- Hypertables
+url: https://raw.githubusercontent.com/api-evangelist/timescaledb/refs/heads/main/apis.yml
 created: '2026-05-08'
-modified: '2026-10-06'
+modified: '2026-10-13'
 specificationVersion: '0.23'
-apis:
-- aid: timescaledb:postgres-wire
-  name: TimescaleDB PostgreSQL Wire Interface
-  description: >-
-    The database itself is accessed via the PostgreSQL wire protocol (port 5432), with TimescaleDB SQL
-    functions for hypertable management, compression, continuous aggregates and hyperfunctions. Not a
-    REST API.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.tigerdata.com/docs/api/latest
-  baseURL: postgres://<host>:5432/<db>
-  tags:
-  - PostgreSQL
-  - SQL
-  - Wire Protocol
-  properties:
-  - type: Documentation
-    url: https://www.tigerdata.com/docs/api/latest
-  - type: SourceCode
-    url: https://github.com/timescale/timescaledb
-- aid: timescaledb:timescaledb-analytics-api
-  name: TimescaleDB / Tiger Data Analytics API
-  description: Track analytics events.
-  humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  baseURL: https://console.cloud.tigerdata.com/public/api/v1
-  tags:
-  - Analytics
-  properties:
-  - type: OpenAPI
-    url: openapi/timescaledb-analytics-api-openapi.yml
-  - type: Documentation
-    url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  - type: OpenAPISource
-    url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-  - type: SDKs
-    url: https://github.com/timescale/tiger-cli
-- aid: timescaledb:timescaledb-auth-api
-  name: TimescaleDB / Tiger Data Auth API
-  description: Authentication and authorization information.
-  humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  baseURL: https://console.cloud.tigerdata.com/public/api/v1
-  tags:
-  - Authentication
-  tags_raw:
-  - Auth
-  properties:
-  - type: OpenAPI
-    url: openapi/timescaledb-auth-api-openapi.yml
-  - type: Documentation
-    url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  - type: OpenAPISource
-    url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-  - type: SDKs
-    url: https://github.com/timescale/tiger-cli
-- aid: timescaledb:timescaledb-read-replica-sets-api
-  name: TimescaleDB / Tiger Data Read Replica Sets API
-  description: >-
-    The Read Replica Sets API from TimescaleDB / Tiger Data — 6 operation(s) for read replica sets.
-  humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  baseURL: https://console.cloud.tigerdata.com/public/api/v1
-  tags:
-  - Read Replica Sets
-  properties:
-  - type: OpenAPI
-    url: openapi/timescaledb-read-replica-sets-api-openapi.yml
-  - type: Documentation
-    url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  - type: OpenAPISource
-    url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-  - type: SDKs
-    url: https://github.com/timescale/tiger-cli
-- aid: timescaledb:timescaledb-services-api
-  name: TimescaleDB / Tiger Data Services API
-  description: Manage services, read replicas, and their associated actions.
-  humanURL: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  baseURL: https://console.cloud.tigerdata.com/public/api/v1
-  tags:
-  - Services
-  properties:
-  - type: OpenAPI
-    url: openapi/timescaledb-services-api-openapi.yml
-  - type: Documentation
-    url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  - type: OpenAPISource
-    url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-  - type: SDKs
-    url: https://github.com/timescale/tiger-cli
-- aid: timescaledb:timescaledb-vpcs-api
-  name: TimescaleDB / Tiger Data VP Cs API
-  description: Manage VPCs and their peering connections.
-  humanURL: https://www.tigerdata.com/docs/api/latest
-  baseURL: postgres://<host>:5432/<db>
-  tags:
-  - VPC
-  tags_raw:
-  - VPCs
-  properties:
-  - type: OpenAPI
-    url: openapi/timescaledb-vpcs-api-openapi.yml
-  - type: Documentation
-    url: https://www.tigerdata.com/docs/reference/tiger-cloud-rest
-  - type: OpenAPISource
-    url: https://raw.githubusercontent.com/timescale/tiger-cli/main/openapi.yaml
-  - type: SDKs
-    url: https://github.com/timescale/tiger-cli
-common:
-  - url: https://www.tigerdata.com/blog
-    type: Blog
-  - url: https://www.tigerdata.com/blog/rss
-    type: BlogRSS
-  - type: CapabilityMap
-    url: capabilities/timescaledb-capability-edges.yml
-    name: TimescaleDB / Tiger Data Business Capability Map
-  - type: IssueTracker
-    url: https://github.com/timescale/timescaledb/issues
-  - type: Releases
-    url: https://github.com/timescale/timescaledb/releases
-  - type: SecurityPolicy
-    url: https://github.com/timescale/timescaledb/blob/main/SECURITY.md
-  - type: CodeOfConduct
-    url: https://github.com/timescale/timescaledb/blob/main/.github/CODE_OF_CONDUCT.md
-  - type: ContributionGuide
-    url: https://github.com/timescale/timescaledb/blob/main/CONTRIBUTING.md
-  - type: AgenticAccess
-    url: agentic-access/timescaledb-agentic-access.yml
-  - type: TrustCenter
-    url: security/timescaledb-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/timescaledb-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/timescaledb-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/timescaledb
-  - type: Website
-    url: https://www.tigerdata.com/
-  - type: LegacyWebsite
-    url: https://www.timescale.com/
-  - type: Documentation
-    url: https://www.tigerdata.com/docs
-  - type: Pricing
-    url: https://www.tigerdata.com/pricing
-  - type: GitHub
-    url: https://github.com/timescale
-  - type: Console
-    url: https://console.cloud.timescale.com/
-  - type: Plans
-    url: plans/timescaledb-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/timescaledb-rate-limits.yml
-  - type: FinOps
-    url: finops/timescaledb-finops.yml
-  - type: Integrations
-    url: https://www.tigerdata.com/partners
-integrations:
-  - name: TigerData
-  - name: Hero
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: ParentCompany
+  url: https://www.tigerdata.com/
+  name: Timescale / Tiger Data (timescale)
+- type: Documentation
+  url: https://docs.tigerdata.com/
+apis: []
+x-parent: timescale
+x-relationship: product
+x-consolidated-into: timescale
