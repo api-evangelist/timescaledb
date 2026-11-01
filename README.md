@@ -64,6 +64,37 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-This profile has been **merged into [timescale](https://apis.io/providers/timescale/)** — the two records described the same company, and that one is canonical.
+> **Retired — merged into [Timescale](https://apis.io/providers/timescale/).** The two records described the same company, and that one is canonical. Nothing in this repository is maintained any more.
 
-Nothing here is maintained any more. The company's current profile, rating and artifacts are at [apis.io/providers/timescale/](https://apis.io/providers/timescale/).
+**Why:** TimescaleDB is Timescale's (Tiger Data's) product; timescale is canonical and already publishes every Tiger Cloud REST API timescaledb held (analytics, auth, read replica sets, services, VPCs). The doc-only PostgreSQL wire interface entry was moved into timescale; API and artifact pages map 1:1 to the timescale equivalents, otherwise to the provider page. timescaledb stays live as a pointer profile with no APIs. Approved by Kin Lane 2026-10-13.
+
+**Retired:** 2026-10-13
+
+## Where to go now
+
+The current profile, APIs, artifacts and rating for Timescale are on APIs.io at **[apis.io/providers/timescale/](https://apis.io/providers/timescale/)**.
+
+Pages that used to belong to this profile now live at:
+
+- [Timescale Agentic Access](https://apis.io/agentic-access/timescale/timescale-agentic-access/)
+- [Timescale Postgres Wire](https://apis.io/apis/timescale/timescale-postgres-wire/)
+- [Timescale Analytics API](https://apis.io/apis/timescale/timescale-analytics-api/)
+- [Timescale Auth API](https://apis.io/apis/timescale/timescale-auth-api/)
+- [Timescale Read Replica Sets API](https://apis.io/apis/timescale/timescale-read-replica-sets-api/)
+- [Timescale Services API](https://apis.io/apis/timescale/timescale-services-api/)
+- [Timescale Vpcs API](https://apis.io/apis/timescale/timescale-vpcs-api/)
+- [Open Timescale Analytics API](https://apis.io/collections/timescale/open-timescale-analytics-api/)
+- [Open Timescale Auth API](https://apis.io/collections/timescale/open-timescale-auth-api/)
+- [Open Timescale Read Replica Sets API](https://apis.io/collections/timescale/open-timescale-read-replica-sets-api/)
+- [Open Timescale Services API](https://apis.io/collections/timescale/open-timescale-services-api/)
+- [Open Timescale Vpcs API](https://apis.io/collections/timescale/open-timescale-vpcs-api/)
+- [Timescale FinOps](https://apis.io/finops/timescale/timescale-finops/)
+- [Timescale Plans Pricing](https://apis.io/plans/timescale/timescale-plans-pricing/)
+- [Timescale Rate Limits](https://apis.io/rate-limits/timescale/timescale-rate-limits/)
+- [Timescale Domain Security](https://apis.io/security/timescale/timescale-domain-security/)
+- [Timescale Trust Center](https://apis.io/security/timescale/timescale-trust-center/)
+- [Timescale Vulnerability Disclosure](https://apis.io/security/timescale/timescale-vulnerability-disclosure/)
+
+## Open an issue
+
+Issues about Timescale belong on the canonical profile: [open one on api-evangelist/timescale](https://github.com/api-evangelist/timescale/issues/new). If you think this merge was a mistake — these were really two companies — say so there or email [info@apievangelist.com](mailto:info@apievangelist.com).
